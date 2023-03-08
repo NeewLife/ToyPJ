@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+          <div class="logo">
+            <h1 class="text-light"><a href="index.html">WeBuild</a></h1>
+          </div>
+          <nav id="navbar" class="navbar">
+            <ul id="navbar">
+              <li><a class="nav-link" href="../WeBuild/post.html">게시판</a></li>
+              <li><a class="nav-link" href="../WeBuild/login.html">로그인</a></li>
+              <li><a class="nav-link" href="#">회원가입</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+    <div class="container">
+        <form class="row gap-4">
+            <div class="col-6">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-6">
+              <label for="inputPassword4" class="form-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">로그인</button>
+              <button type="submit" class="btn btn-primary">회원가입</button>
+            </div>
+          </form>
+    </div>
+      
+</body>
+</html>

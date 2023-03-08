@@ -1,0 +1,9 @@
+.container {
+    background-color: rgb(189, 160, 31);
+    margin: 20px 15vw;
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    width: 1000px;
+    height: auto;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <link href="assets/css/register.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+          <div class="logo">
+            <h1 class="text-light"><a href="index.html">WeBuild</a></h1>
+          </div>
+          <nav id="navbar" class="navbar">
+            <ul id="navbar">
+              <li><a class="nav-link" href="#">게시판</a></li>
+              <li><a class="nav-link" href="../WeBuild/login.html">로그인</a></li>
+              <li><a class="nav-link" href="#">회원가입</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <div class="container">
+        <form class="row gap-4">
+            <div class="col-9">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-9">
+              <label for="inputPassword4" class="form-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-9">
+              <label for="inputAddress" class="form-label">키</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="ex) 188.2cm">
+            </div>
+            <div class="col-9">
+              <label for="inputAddress2" class="form-label">몸무게</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="ex) 68.2kg">
+            </div>
+            <div class="col-9">
+              <label for="inputCity" class="form-label">활동 지역</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="시 단위로 입력하세요. ex) 서울시">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">회원가입</button>
+            </div>
+          </form>
+    </div>
+
+</body>
+</html>
