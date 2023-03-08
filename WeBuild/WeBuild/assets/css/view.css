@@ -1,9 +1,62 @@
 .container {
-    background-color: rgb(189, 160, 31);
-    margin: 20px 15vw;
+    margin: 20px 400px;
+    padding-bottom: 70px;
     position: relative;
-    text-align: center;
+    text-align: start;
     font-size: 14px;
     width: 1000px;
     height: auto;
+}
+
+#button {
+    text-align: right;
+}
+
+.form-control{
+    height: auto;
+}
+
+.form-control:disabled {
+    background-color: #fff;
+    color: black;
+    height: auto;
+}
+
+.numbox {
+    padding: 15px 3px; 
+    margin-top: 30px;
+}
+
+#total_reply{
+    color: crimson;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.reply{
+    border: #000 0.1;
+    width: 1020px;
+    margin: 0;
+    padding: 9px;
+    border-top: 1px solid #eee;
+}
+
+.rp_nickbox {
+    margin-right: 33px;
+    margin-top: 3px;
+    width: 98px;
+    padding: 0;
+}
+
+.rp_content{
+    margin-right: 33px;
+    margin-top: 3px;
+    width: 640px;
+    height: auto;
+}
+
+.rp_date{
+    text-align: right;
+    font-size: small;
+    margin-top: 3px;
 }
