@@ -1,5 +1,5 @@
 .container {
-    margin: 20px 400px;
+    margin: 70px auto;
     position: relative;
     text-align: center;
     font-size: 14px;
@@ -13,7 +13,6 @@ article {
 
 /* 번호 */
 tr :first-child{
-    width: 100px;
     height: auto;
 }
 
@@ -35,4 +34,13 @@ tr>td.writeDate {
 /* 조회수 */
 tr>td.viewCount {
     width: 70px;
+}
+
+a>p {
+    margin: 0;
+}
+
+#button{
+    padding: 10px 10px;
+    text-align: right;
 }
