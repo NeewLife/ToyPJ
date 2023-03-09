@@ -1,13 +1,13 @@
-package com.Volleyball.ToyPJ;
+package com.project.ToyPJ;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ToyProjectApplication {
+public class ToyPjApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ToyProjectApplication.class, args);
+		SpringApplication.run(ToyPjApplication.class, args);
 	}
 
 }

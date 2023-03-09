@@ -1,10 +1,10 @@
-package com.Volleyball.ToyPJ;
+package com.project.ToyPJ;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ToyProjectApplicationTests {
+class ToyPjApplicationTests {
 
 	@Test
 	void contextLoads() {
