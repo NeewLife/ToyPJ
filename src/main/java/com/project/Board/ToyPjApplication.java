@@ -1,4 +1,4 @@
-package com.project.ToyPJ;
+package com.project.Board;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
