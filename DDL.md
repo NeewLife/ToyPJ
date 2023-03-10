@@ -12,7 +12,7 @@ CREATE TABLE `pj_post` (
 CREATE TABLE `user` (
 `user_num`	int(10)	NOT NULL	COMMENT '사용자식별번호',
 `user_name`	varchar(20)	NOT NULL	COMMENT '사용자 이름',
-`user_sex`	tynyint(1)	NULL	COMMENT '성별',
+`user_sex`	tinyint(1)	NULL	COMMENT '성별',
 `user_age_group`	int(1)	NOT NULL	COMMENT '연령대',
 `user_id`	varchar(15)	NOT NULL	COMMENT '아이디',
 `user_password`	varchar(15)	NOT NULL	COMMENT '비밀번호',
