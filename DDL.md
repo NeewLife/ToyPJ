@@ -8,7 +8,8 @@ CREATE TABLE `pj_post` (
 	`modified_date`	datetime	NULL	DEFAULT current_timestamp()	COMMENT '수정한 날짜',
 	`delete_yn`	tinyint(1)	NULL	DEFAULT 0	COMMENT '삭제여부',
 	`notice_yn`	tinyint(1)	NULL	DEFAULT 0	COMMENT '공지글 여부',
-	`user_id`	int(10)	NOT NULL	COMMENT '사용자식별번호'
+	`user_id`	int(10)	NOT NULL	COMMENT '사용자식별번호',
+	primary key (`post_id`)
 );
 
 CREATE TABLE `user` (
@@ -20,7 +21,8 @@ CREATE TABLE `user` (
 	`password`	varchar(15)	NOT NULL	COMMENT '비밀번호',
 	`nickname`	varchar(15)	NOT NULL	COMMENT '닉네임',
 	`height`	dec(4,1)	NULL	COMMENT '키',
-	`weight`	dec(4,1)	NULL	COMMENT '몸무게'
+	`weight`	dec(4,1)	NULL	COMMENT '몸무게',
+	primary key (`user_id`)
 );
 
 CREATE TABLE `reply` (
@@ -30,12 +32,3 @@ CREATE TABLE `reply` (
 	`post_id`	int(10)	NOT NULL	COMMENT '식별번호',
 	`user_id`	int(10)	NOT NULL	COMMENT '사용자식별번호'
 );
-
-ALTER TABLE `pj_post` ADD CONSTRAINT `PK_PJ_POST` PRIMARY KEY (
-	`post_id`
-);
-
-ALTER TABLE `user` ADD CONSTRAINT `PK_USER` PRIMARY KEY (
-	`user_id`
-);
-
