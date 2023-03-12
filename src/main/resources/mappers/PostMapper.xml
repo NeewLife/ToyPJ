@@ -13,7 +13,7 @@
         ,   user_id
     </sql>
     
-    <insert id="save" parameterType="com.project.Board.domain.post.PostRequest">
+    <insert id="save" parameterType="com.project.Board.domain.post.PostRequest" useGeneratedKeys="true" keyProperty="postId">
         INSERT INTO pj_post(
             <include refid="postColumns" />
         )

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-head"></head>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작성 페이지</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <link href="assets/css/header.css" rel="stylesheet">
-    <link href="assets/css/view.css" rel="stylesheet">
-    <link href="assets/css/write.css" rel="stylesheet">
+    <link href="/assets/css/header.css" rel="stylesheet">
+    <link href="/assets/css/view.css" rel="stylesheet">
+    <link href="/assets/css/write.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
@@ -19,11 +17,11 @@
           <div class="logo">
             <h1 class="text-light"><a href="index.html">WeBuild</a></h1>
           </div>
-          <nav id="navbar" class="navbar">
+          <nav class="navbar">
             <ul id="navbar">
-              <li><a class="nav-link" href="../WeBuild/post.html">게시판</a></li>
-              <li><a class="nav-link" href="../WeBuild/login.html">로그인</a></li>
-              <li><a class="nav-link" href="../WeBuild/register.html">회원가입</a></li>
+              <li><a class="nav-link" href="/post/post.html">게시판</a></li>
+              <li><a class="nav-link" href="/post/login.html">로그인</a></li>
+              <li><a class="nav-link" href="/post/register.html">회원가입</a></li>
             </ul>
           </nav>
         </div>
@@ -32,7 +30,7 @@
     <div class="container">
         <form class="row gap-5">
             <div class="form-floating">
-                <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></input>
+                <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea">
                 <label for="floatingTextarea">제목</label>
               </div>
             <div class="form-floating">
