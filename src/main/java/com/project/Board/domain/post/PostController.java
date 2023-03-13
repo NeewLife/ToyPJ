@@ -22,11 +22,6 @@ public class PostController {
         return "post/index";
     }
 
-    @GetMapping("/post/login.do")
-    public String openLoginPage(Model model) {
-        return "post/login";
-    }
-
     @GetMapping("/post/mypage.do")
     public String openMyPage(Model model) {
         return "post/mypage";
