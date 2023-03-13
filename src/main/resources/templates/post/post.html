@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-head">
     <title>게시판</title>
-    <link href="/assets/css/header.css" rel="stylesheet">
-    <link href="/assets/css/post.css" rel="stylesheet">
 </head>
 <body>
     <header id="header">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="container-fluid d-flex justify-content-between align-items-center" >
           <div class="logo">
             <h1 class="text-light"><a href="index.html">WeBuild</a></h1>
           </div>
@@ -39,21 +34,21 @@
                 <tbody>
                   <tr>
                     <th scope="row">11234441</th>
-                    <td class="title">Mark</td>
+                    <td class="title"><a href="../WeBuild/view.html"><p>Mark</p></a></td>
                     <td class="writer">Otto</td>
                     <td class="writeDate">03.09</td>
                     <td class="viewCount">3814</td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
-                    <td class="title">Jacob</td>
+                    <td class="title"><a href="../WeBuild/view.html"><p>Jacob</p></a></td>
                     <td class="writer">Thornton</td>
                     <td class="writeDate">01.13</td>
                     <td class="viewCount">119</td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
-                    <td class="title">Larry the Bird</td>
+                    <td class="title"><a href="../WeBuild/view.html"><p>Larry the Bird</p></a></td>
                     <td class="writer">Larry the Bird</td>
                     <td class="writeDate">22.12.25</td>
                     <td class="viewCount">1024</td>
@@ -67,14 +62,14 @@
                   </tr>
                   <tr>
                     <th scope="row">1182</th>
-                    <td class="title">넘버원 배구단원 모집</td>
+                    <td class="title"><a href="../WeBuild/view.html"><p>넘버원 배구단원 모집</p></a></td>
                     <td class="writer">오세영</td>
                     <td class="writeDate">03.07</td>
                     <td class="viewCount">1</td>
                   </tr>
                   <tr>
                     <th scope="row">91</th>
-                    <td class="title">넘버원 배구단원 모집</td>
+                    <td class="title"><a href="../WeBuild/view.html"><p>넘버원 배구단원 모집</p></a></td>
                     <td class="writer">오세영</td>
                     <td class="writeDate">03.05</td>
                     <td class="viewCount">3</td>

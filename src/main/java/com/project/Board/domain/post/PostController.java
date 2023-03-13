@@ -18,8 +18,33 @@ public class PostController {
     }
 
     @GetMapping("/post/index.do")
-    public String Main(Model model) {
+    public String openMain(Model model) {
         return "post/index";
+    }
+
+    @GetMapping("/post/login.do")
+    public String openLoginPage(Model model) {
+        return "post/login";
+    }
+
+    @GetMapping("/post/mypage.do")
+    public String openMyPage(Model model) {
+        return "post/mypage";
+    }
+
+    @GetMapping("/post/post.do")
+    public String openPost(Model model) {
+        return "post/post";
+    }
+
+    @GetMapping("/post/view.do")
+    public String openViewPage(Model model) {
+        return "post/view";
+    }
+
+    @GetMapping("/post/register.do")
+    public String openRegister(Model model) {
+        return "post/register";
     }
 
 }
