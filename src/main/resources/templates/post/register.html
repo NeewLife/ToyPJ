@@ -9,7 +9,7 @@
           <div class="logo">
             <h1 class="text-light"><a href="index.html">WeBuild</a></h1>
           </div>
-          <nav id="navbar" class="navbar">
+          <nav class="navbar">
             <ul id="navbar">
               <li><a class="nav-link" href="../WeBuild/post.html">게시판</a></li>
               <li><a class="nav-link" href="../WeBuild/login.html">로그인</a></li>
@@ -20,27 +20,52 @@
       </header>
 
       <div class="container">
-        <form class="row gap-4">
+        <form class="row gap-4" action="/post/signup" method="post" >
             <div class="col-9">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputEmail4">
+                <label for="inputName" class="form-label">실명</label>
+                <input type="text" class="form-control" id="inputName" name="name">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputSex">성별</label>
+                <select class="form-select" id="inputSex">
+                    <option selected>Choose...</option>
+                    <option value="true">남자</option>
+                    <option value="false">여자</option>
+                </select>
+            </div>
+            <div class="col-9">
+              <label for="inputEmail4" class="form-label">Id</label>
+              <input type="text" class="form-control" id="inputEmail4" name="userId">
             </div>
             <div class="col-9">
               <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4">
+              <input type="password" class="form-control" id="inputPassword4" name="pw">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputAgeGroup">연령대</label>
+                <select class="form-select" id="inputAgeGroup">
+                    <option selected>현재 연령대</option>
+                    <option value="10">10대</option>
+                    <option value="20">20대</option>
+                    <option value="30">30대</option>
+                    <option value="40">40대</option>
+                    <option value="50">50대</option>
+                    <option value="60">50대 이상</option>
+                </select>
+            </div>
+            <div class="col-9">
+                <label for="inputNickname" class="form-label">닉네임</label>
+                <input type="text" class="form-control" id="inputNickname" name="nickname">
             </div>
             <div class="col-9">
               <label for="inputAddress" class="form-label">키</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="ex) 188.2cm">
+              <input type="text" class="form-control" id="inputAddress" placeholder="ex) 188.2cm" name="height">
             </div>
             <div class="col-9">
               <label for="inputAddress2" class="form-label">몸무게</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="ex) 68.2kg">
+              <input type="text" class="form-control" id="inputAddress2" placeholder="ex) 68.2kg" name="weight">
             </div>
-            <div class="col-9">
-              <label for="inputCity" class="form-label">활동 지역</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="시 단위로 입력하세요. ex) 서울시">
-            </div>
+
             <div class="col-12">
               <button type="submit" class="btn btn-primary">회원가입</button>
             </div>
