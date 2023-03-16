@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-head">
-    <title>로그인 페이지</title>
-</head>
+<head th:replace="fragments/header :: main-head"> </head>
 <body>
     <header id="header">
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <div class="logo">
             <h1 class="text-light"><a href="index.html">WeBuild</a></h1>
           </div>
-          <nav id="navbar" class="navbar">
+          <nav class="navbar">
             <ul id="navbar">
-              <li><a class="nav-link" href="../WeBuild/post.html">게시판</a></li>
-              <li><a class="nav-link" href="../WeBuild/login.html">로그인</a></li>
-              <li><a class="nav-link" href="../WeBuild/register.html">회원가입</a></li>
+              <li><a class="nav-link" href="/post.do">게시판</a></li>
+              <li><a class="nav-link" href="/login.do">로그인</a></li>
+              <li><a class="nav-link" href="/register.do">회원가입</a></li>
             </ul>
           </nav>
         </div>
@@ -22,18 +20,18 @@
     <div class="container">
         <div th:if="${param.error}">Invalid username and password.</div>
         <div th:if="${param.logout}">You have been logged out.</div>
-        <form th:action="@{/login}" method="post" class="row gap-4">
+        <form th:action="@{/login-process}" method="post" class="row gap-4">
             <div class="col-6">
               <label for="inputEmail4" class="form-label">Email</label>
-              <input type="text" class="form-control" id="inputEmail4">
+              <input type="text" class="form-control" id="inputEmail4" name="userid">
             </div>
             <div class="col-6">
               <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4">
+              <input type="password" class="form-control" id="inputPassword4" name="pw">
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary">로그인</button>
-              <button type="submit" class="btn btn-primary">회원가입</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='/post/register.do'" >회원가입</button>
             </div>
           </form>
     </div>

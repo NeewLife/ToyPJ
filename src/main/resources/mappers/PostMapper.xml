@@ -66,4 +66,5 @@
         ORDER BY
             created_date desc
     </select>
+
 </mapper>

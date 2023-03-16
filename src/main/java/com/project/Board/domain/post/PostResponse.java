@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Getter
 public class PostResponse {
+
     private int postId;
     private String title;
     private String writer;
