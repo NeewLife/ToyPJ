@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.Board.domain.user.UserMapper">
+<mapper namespace="com.project.Board.domain.mappers.UserMapper">
     <sql id="userColumns">
-            user_id
+            id
         ,   name
         ,   sex
         ,   age_group
-        ,   login_id
+        ,   user_id
         ,   password
         ,   nickname
         ,   height
         ,   weight
+        ,   roles
     </sql>
 
-    <insert id="joinUser">
-        INSERT INTO user
-            ( name, sex, age_group, login_id, password, nickname, height, weight)
+    <insert id="joinUser" parameterType="com.project.Board.domain.user.MemberRequest">
+        INSERT INTO `user`
+            ( name, sex, age_group, user_id, password, nickname, height, weight)
         VALUES
-            (#{name},
+            ( #{name}, #{sex}, #{ageGroup}, #{userId}, #{password}, #{nickname}, #{height}, #{weight})
+
     </insert>
 
+    <select id="findAll" resultType="com.project.Board.domain.user.Member">
+        SELECT
+            <include refid="userColumns" />
+        FROM
+            `user`
+    </select>
 </mapper>

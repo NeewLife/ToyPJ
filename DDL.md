@@ -8,16 +8,16 @@ CREATE TABLE `pj_post` (
 	`modified_date`	datetime	NULL	DEFAULT current_timestamp()	COMMENT '수정한 날짜',
 	`delete_yn`	tinyint(1)	NULL	DEFAULT 0	COMMENT '삭제여부',
 	`notice_yn`	tinyint(1)	NULL	DEFAULT 0	COMMENT '공지글 여부',
-	`user_id`	int(10)	NOT NULL	COMMENT '사용자식별번호',
+	`id`	int(10)	NOT NULL	COMMENT '사용자식별번호',
 	primary key (`post_id`)
 );
 
 CREATE TABLE `user` (
-	`user_id`	int(10) auto_increment	NOT NULL	COMMENT '사용자식별번호',
+	`id`	int(10) auto_increment	NOT NULL	COMMENT '사용자식별번호',
 	`name`	varchar(20)	NOT NULL	COMMENT '사용자 이름',
-	`sex`	tinyint(1)	NULL	COMMENT '성별',
+	`sex`	varchar(3)	NULL	COMMENT '성별',
 	`age_group`	int(1)	NOT NULL	COMMENT '연령대',
-	`login_id`	varchar(15)	NOT NULL	COMMENT '아이디',
+	`user_id`	varchar(15)	NOT NULL	COMMENT '아이디',
 	`password`	varchar(15)	NOT NULL	COMMENT '비밀번호',
 	`nickname`	varchar(15)	NOT NULL	COMMENT '닉네임',
 	`height`	dec(4,1)	NULL	COMMENT '키',

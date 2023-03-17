@@ -3,7 +3,7 @@ package com.project.Board;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.project.Board.domain.post.PostMapper;
+import com.project.Board.domain.mappers.PostMapper;
 import com.project.Board.domain.post.PostRequest;
 import com.project.Board.domain.post.PostResponse;
 import org.junit.jupiter.api.Test;
