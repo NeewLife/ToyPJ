@@ -1,6 +1,5 @@
 package com.project.Board.config.Security;
 
-import com.project.Board.security.ExService;
 import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -21,14 +20,14 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests(request -> request
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                        .requestMatchers("/assets/**", "/post/register.do", "/auth/join").permitAll()
+                        .requestMatchers("/assets/**", "/post/**", "/auth/join").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
                     .loginPage("/post/login")	            // [A] 커스텀 로그인 페이지 지정
                     .loginProcessingUrl("/login-process")	// [B] submit 받을 url
-                    .usernameParameter("userid")	        // [C] submit할 아이디
-                    .passwordParameter("pw")	            // [D] submit할 비밀번호
+                    .usernameParameter("userId")	        // [C] submit할 아이디
+                    .passwordParameter("password")	            // [D] submit할 비밀번호
                     .defaultSuccessUrl("/post/index.do", true)
                     .permitAll()
                 )
