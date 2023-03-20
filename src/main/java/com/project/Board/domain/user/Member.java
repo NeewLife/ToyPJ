@@ -1,12 +1,9 @@
 package com.project.Board.domain.user;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@Entity
+@Data
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +19,5 @@ public class Member {
     private int weight;
     private String roles;
 
-    public Member() {};
 
-    public String toString(){
-        return "id : " + id +
-                "name : " + name +
-                "sex : " + sex +
-                "ageGroup : " + ageGroup +
-                "userId : " + userId +
-                "password : " + password +
-                "nickname : " + nickname +
-                "height : " + height +
-                "weight : " + weight +
-                "roles : " + roles;
-    }
 }

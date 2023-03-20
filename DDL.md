@@ -15,14 +15,14 @@ CREATE TABLE `pj_post` (
 CREATE TABLE `user` (
 	`id`	int(10) auto_increment	NOT NULL	COMMENT '사용자식별번호',
 	`name`	varchar(20)	NOT NULL	COMMENT '사용자 이름',
-	`sex`	varchar(3)	NULL	COMMENT '성별',
+	`sex`	varchar(6)	NULL	COMMENT '성별',
 	`age_group`	int(1)	NOT NULL	COMMENT '연령대',
 	`user_id`	varchar(15)	NOT NULL	COMMENT '아이디',
 	`password`	varchar(15)	NOT NULL	COMMENT '비밀번호',
 	`nickname`	varchar(15)	NOT NULL	COMMENT '닉네임',
 	`height`	dec(4,1)	NULL	COMMENT '키',
 	`weight`	dec(4,1)	NULL	COMMENT '몸무게',
-	primary key (`user_id`)
+	primary key (`id`)
 );
 
 CREATE TABLE `reply` (
@@ -30,5 +30,5 @@ CREATE TABLE `reply` (
 	`rep_content`	varchar(2000)	NOT NULL	COMMENT '내용',
 	`rep_created_time`	datetime	NOT NULL	DEFAULT current_timestamp()	COMMENT '작성날짜',
 	`post_id`	int(10)	NOT NULL	COMMENT '식별번호',
-	`user_id`	int(10)	NOT NULL	COMMENT '사용자식별번호'
+	`id`	int(10)	NOT NULL	COMMENT '사용자식별번호'
 );

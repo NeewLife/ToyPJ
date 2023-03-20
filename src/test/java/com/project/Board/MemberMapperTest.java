@@ -18,7 +18,6 @@ public class MemberMapperTest {
     @Test
     void joinUser() {
         MemberRequest member = new MemberRequest();
-        member.setId(1L);
         member.setName("오세영");
         member.setSex("남자");
         member.setAgeGroup(20);
