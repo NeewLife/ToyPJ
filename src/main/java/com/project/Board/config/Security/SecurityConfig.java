@@ -33,7 +33,15 @@ public class SecurityConfig {
                     .defaultSuccessUrl("/post/index", true)
                     .permitAll()
                 )
-                .logout(withDefaults());
+                .logout(withDefaults()
+                );
+//                .sessionManagement(
+//                        s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                                .sessionFixation(sf ->sf.changeSessionId())
+//                                .maximumSessions(1)
+//                                .maxSessionsPreventsLogin(true)
+//                                .expiredUrl("/session-expired")
+//                );
         return http.build();
     }
 }

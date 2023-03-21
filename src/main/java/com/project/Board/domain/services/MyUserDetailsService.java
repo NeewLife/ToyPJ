@@ -20,7 +20,6 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String insertedUserId) throws UsernameNotFoundException {
-//        Optional<Member> findOne = memberService.loginUser(insertedUserId);
         Optional<Member> findOne = memberService.loginUser(insertedUserId);
         Member member = findOne.orElseThrow(() -> new UsernameNotFoundException("없는 회원입니다 ㅠ"));
         System.out.println(findOne.toString());
