@@ -1,7 +1,7 @@
 package com.project.Board.domain.mappers;
 
-import com.project.Board.domain.post.PostRequest;
-import com.project.Board.domain.post.PostResponse;
+import com.project.Board.domain.dto.post.PostRequest;
+import com.project.Board.domain.dto.post.PostResponse;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

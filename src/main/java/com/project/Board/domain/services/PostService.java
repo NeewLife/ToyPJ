@@ -1,6 +1,8 @@
-package com.project.Board.domain.post;
+package com.project.Board.domain.services;
 
 import com.project.Board.domain.mappers.PostMapper;
+import com.project.Board.domain.dto.post.PostRequest;
+import com.project.Board.domain.dto.post.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

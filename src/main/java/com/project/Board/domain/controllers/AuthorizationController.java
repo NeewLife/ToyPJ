@@ -1,13 +1,12 @@
 package com.project.Board.domain.controllers;
 
-import com.project.Board.domain.user.Member;
-import com.project.Board.domain.user.MemberRequest;
-import com.project.Board.domain.user.MemberService;
+import com.project.Board.domain.dto.user.Member;
+import com.project.Board.domain.dto.user.MemberRequest;
+import com.project.Board.domain.services.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/auth")
@@ -19,13 +18,14 @@ public class AuthorizationController {
     }
 
     @PostMapping("/login-process")
-    public void loginUser(Model model, Member member){
+    public String loginUser(Model model, Member member){
         memberService.loginUser(member.getUserId());
+        return "redirect:/post/login";
     }
 
     @PostMapping("/register")
-    public void userSignUp(Model model, final MemberRequest memberRequest){
+    public String userSignUp(Model model, final MemberRequest memberRequest){
         memberService.signup(memberRequest);
-        
+        return "redirect:/post/login";
     }
 }

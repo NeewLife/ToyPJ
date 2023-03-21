@@ -1,4 +1,4 @@
-package com.project.Board.domain.post;
+package com.project.Board.domain.dto.post;
 
 import lombok.Getter;
 import lombok.Setter;

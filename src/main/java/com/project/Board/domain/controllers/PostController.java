@@ -1,8 +1,8 @@
 package com.project.Board.domain.controllers;
 
-import com.project.Board.domain.post.PostService;
-import com.project.Board.domain.user.MemberRequest;
-import com.project.Board.domain.user.MemberService;
+import com.project.Board.domain.services.PostService;
+import com.project.Board.domain.dto.user.MemberRequest;
+import com.project.Board.domain.services.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

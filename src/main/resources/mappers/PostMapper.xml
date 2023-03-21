@@ -13,7 +13,7 @@
         ,   user_id
     </sql>
     
-    <insert id="save" parameterType="com.project.Board.domain.post.PostRequest" useGeneratedKeys="true" keyProperty="postId">
+    <insert id="save" parameterType="com.project.Board.domain.dto.post.PostRequest" useGeneratedKeys="true" keyProperty="postId">
         INSERT INTO pj_post(
             <include refid="postColumns" />
         )
@@ -29,7 +29,7 @@
         )
     </insert>
 
-    <select id="findById" parameterType="Integer" resultType="com.project.Board.domain.post.PostResponse">
+    <select id="findById" parameterType="Integer" resultType="com.project.Board.domain.dto.post.PostResponse">
         SELECT
             <include refid="postColumns" />
         FROM
@@ -38,7 +38,7 @@
             post_id = #{postId}
     </select>
     
-    <update id="update" parameterType="com.project.Board.domain.post.PostRequest">
+    <update id="update" parameterType="com.project.Board.domain.dto.post.PostRequest">
         UPDATE pj_post
         SET
             modified_date = NOW()
@@ -56,7 +56,7 @@
             post_id = #{postId}
     </delete>
 
-    <select id="findAll" resultType="com.project.Board.domain.post.PostResponse">
+    <select id="findAll" resultType="com.project.Board.domain.dto.post.PostResponse">
         SELECT
             <include refid="postColumns" />
         FROM

@@ -1,7 +1,7 @@
 package com.project.Board;
 
-import com.project.Board.domain.post.PostRequest;
-import com.project.Board.domain.post.PostService;
+import com.project.Board.domain.dto.post.PostRequest;
+import com.project.Board.domain.services.PostService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

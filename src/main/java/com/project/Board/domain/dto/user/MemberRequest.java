@@ -1,4 +1,4 @@
-package com.project.Board.domain.user;
+package com.project.Board.domain.dto.user;
 
 import lombok.Data;
 

@@ -1,5 +1,6 @@
-package com.project.Board.domain.user;
+package com.project.Board.domain.services;
 
+import com.project.Board.domain.dto.user.Member;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

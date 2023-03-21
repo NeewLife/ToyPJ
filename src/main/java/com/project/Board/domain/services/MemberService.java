@@ -1,6 +1,8 @@
-package com.project.Board.domain.user;
+package com.project.Board.domain.services;
 
 import com.project.Board.domain.mappers.UserMapper;
+import com.project.Board.domain.dto.user.Member;
+import com.project.Board.domain.dto.user.MemberRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

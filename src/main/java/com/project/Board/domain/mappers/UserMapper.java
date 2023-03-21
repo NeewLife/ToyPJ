@@ -1,7 +1,7 @@
 package com.project.Board.domain.mappers;
 
-import com.project.Board.domain.user.Member;
-import com.project.Board.domain.user.MemberRequest;
+import com.project.Board.domain.dto.user.Member;
+import com.project.Board.domain.dto.user.MemberRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Optional;

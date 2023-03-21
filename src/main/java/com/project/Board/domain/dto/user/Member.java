@@ -1,17 +1,14 @@
-package com.project.Board.domain.user;
+package com.project.Board.domain.dto.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String sex;
     private int ageGroup;
-    @Column(unique = true)
     private String userId;
     private String password;
     private String nickname;
