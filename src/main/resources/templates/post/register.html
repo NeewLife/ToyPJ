@@ -25,28 +25,28 @@
         <form class="row gap-4" action="/auth/register" method="post" >
             <div class="col-9">
                 <label for="inputName" class="form-label">실명</label>
-                <input type="text" class="form-control" id="inputName" name="name">
+                <input type="text" class="form-control" id="inputName" name="name" required>
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputSex">성별</label>
-                <select class="form-select" id="inputSex" name="sex">
-                    <option selected name="sex">Choose...</option>
+                <select class="form-select" id="inputSex" name="sex" required>
+                    <option selected name="sex" value="">Choose...</option>
                     <option value="male" name="sex">남자</option>
                     <option value="female" name="sex">여자</option>
                 </select>
             </div>
             <div class="col-9">
               <label for="inputEmail4" class="form-label">Id</label>
-              <input type="text" class="form-control" id="inputEmail4" name="userId">
+              <input type="text" class="form-control" id="inputEmail4" name="userId" required>
             </div>
             <div class="col-9">
               <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" name="password">
+              <input type="password" class="form-control" id="inputPassword4" name="password" required>
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputAgeGroup">연령대</label>
-                <select class="form-select" id="inputAgeGroup" name="ageGroup">
-                    <option selected>현재 연령대</option>
+                <select class="form-select" id="inputAgeGroup" name="ageGroup" required>
+                    <option value="">현재 연령대</option>
                     <option value="10">10대</option>
                     <option value="20">20대</option>
                     <option value="30">30대</option>
@@ -57,15 +57,15 @@
             </div>
             <div class="col-9">
                 <label for="inputNickname" class="form-label">닉네임</label>
-                <input type="text" class="form-control" id="inputNickname" name="nickname">
+                <input type="text" class="form-control" id="inputNickname" name="nickname" required>
             </div>
             <div class="col-9">
               <label for="inputAddress" class="form-label">키</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="ex) 188" name="height">
+              <input type="text" class="form-control" id="inputAddress" placeholder="ex) 188" name="height" required>
             </div>
             <div class="col-9">
               <label for="inputAddress2" class="form-label">몸무게</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="ex) 68" name="weight">
+              <input type="text" class="form-control" id="inputAddress2" placeholder="ex) 68" name="weight" required>
             </div>
 
             <div class="col-12">

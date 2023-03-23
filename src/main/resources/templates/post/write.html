@@ -22,30 +22,52 @@
     </header>
 
     <div class="container">
-        <form class="row gap-5" action="/post/save" method="post">
-            <input type="hidden" id="postId" name="postId" th:if="${post != null}" th:value="${post.id}" />
-            <input type="hidden" id="id" name="id" th:if="${post != null}" th:value="@{${#authentication.principal.id}}" />
+        <form class="row gap-5" id="saveForm" method="post">
+            <input type="hidden" id="postId" name="postId" th:if="${post != null}" th:value="${post.postId}" />
+            <input type="hidden" id="id" name="id" th:value="@{${#authentication.principal.id}}" />
             <input type="hidden" id="writer" name="writer" th:value="@{${#authentication.principal.userId}}"/>
             <div class="form-floating">
                 <div>제목</div>
-                <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="title">
-<!--                <label for="floatingTextarea" th:if="${post == null}">제목</label>-->
-
-                <label for="floatingTextarea" th:if="${post != null}" th:text="${post.title}"></label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="title" required></textarea>
+                <label for="floatingTextarea" ></label>
               </div>
             <div class="form-floating">
                 <div>내용</div>
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="content"></textarea>
-<!--                <label for="floatingTextarea" th:if="${post == null}">상세 내용</label>-->
-                <label for="floatingTextarea" th:if="${post != null}" th:text="${post.content}"></label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="content" required></textarea>
+                <label for="floatingTextarea" ></label>
             </div>
             <div class="col-12" id="button">
-                <button type="submit" class="btn btn-primary">완료</button>
+                <button type="button" onclick="savePost()" id="saveBtn" class="btn btn-primary">완료</button>
             </div>
         </form>
     </div>
 
-    <script>
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        window.onload = () => {
+          renderPostInfo();
+        }
+
+        // 게시글 상세정보 렌더링
+        function renderPostInfo() {
+          const post = [[ ${post} ]];
+          const form = document.getElementById('saveForm');
+          const fields = ['title', 'content'];
+          fields.forEach(field => {
+            form[field].value = post[field];
+          })
+        }
+
+        function savePost() {
+            alert('hi');
+            const form = document.getElementById('saveForm');
+            document.getElementById('saveBtn').disabled = true;
+            form.action = [[ ${post == null} ]] ? '/post/save' : '/post/update';
+            form.submit();
+        }
+
         $(document).ready(function() {
             $('.form-floating').on( 'keyup', 'textarea', function (e){
             $(this).css('height', 'auto' );
@@ -53,6 +75,9 @@
             });
             $('.form-floating').find( 'textarea' ).keyup();
         });
-    </script>
+
+        /*]]>*/
+        </script>
+    </th:block>
 </body>
 </html>

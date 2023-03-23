@@ -36,7 +36,7 @@
                 <tbody>
                   <tr th:each="row, status : ${posts}">
                     <th scope="row" th:text="${status.size - status.index}"></th>
-                    <td class="title" ><a th:href="@{/post/view(id=${row.postId})}"><p th:text="${row.title}" style="margin : 0px"></p></a></td>
+                    <td class="title" ><a th:href="@{/post/view(postId=${row.postId})}"><p th:text="${row.title}" style="margin : 0px"></p></a></td>
                     <td class="writer" th:text="${row.writer}"></td>
                     <td class="writeDate" th:text="${#temporals.format( row.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
                     <td class="viewCount" th:text="${row.viewCount}"></td>
