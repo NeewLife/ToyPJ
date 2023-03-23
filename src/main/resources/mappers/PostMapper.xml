@@ -10,11 +10,11 @@
         ,   view_count
         ,   created_date
         ,   modified_date
-        ,   user_id
+        ,   id
     </sql>
     
     <insert id="save" parameterType="com.project.Board.domain.dto.post.PostRequest" useGeneratedKeys="true" keyProperty="postId">
-        INSERT INTO pj_post(
+        INSERT INTO pj_post (
             <include refid="postColumns" />
         )
         VALUES (
@@ -25,7 +25,7 @@
         ,   0
         ,   NOW()
         ,   NULL
-        ,   #{userId}
+        ,   #{id}
         )
     </insert>
 
@@ -36,6 +36,8 @@
             pj_post
         WHERE
             post_id = #{postId}
+        AND
+            delete_yn = 0
     </select>
     
     <update id="update" parameterType="com.project.Board.domain.dto.post.PostRequest">
@@ -45,7 +47,7 @@
         ,   title = #{title}
         ,   content = #{content}
         ,   writer = #{writer}
-        ,   user_id = #{userId}
+        ,   id = #{id}
     </update>
 
     <delete id="deleteById" parameterType="Integer">
@@ -67,4 +69,16 @@
             created_date desc
     </select>
 
+    <select id="findMine" resultType="com.project.Board.domain.dto.post.PostResponse">
+        SELECT
+            <include refid="postColumns" />
+        FROM
+            pj_post a
+        INNER JOIN
+            `user`b
+        ON
+            a.id = b.id
+        ORDER BY
+            created_date desc
+    </select>
 </mapper>

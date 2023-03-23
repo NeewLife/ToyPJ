@@ -10,8 +10,16 @@ public class PostRequest {
     private String title;
     private String writer;
     private String content;
-    private boolean noticeYn;
-    private int userId;
+    private int id;
 
-
+    @Override
+    public String toString() {
+        return "PostRequest{" +
+                "postId=" + postId +
+                ", title='" + title + '\'' +
+                ", writer='" + writer + '\'' +
+                ", content='" + content + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

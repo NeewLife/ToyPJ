@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-head"></head>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/header :: main-head">
+</head>
 <body>
     <header id="header">
         <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -9,23 +10,34 @@
           </div>
           <nav class="navbar">
             <ul id="navbar">
-              <li><a class="nav-link" href="/post/post">게시판</a></li>
-              <li><a class="nav-link" href="/post/login">로그인</a></li>
-              <li><a class="nav-link" href="/post/register">회원가입</a></li>
+                <li><a class="nav-link" href="/post/post">게시판</a></li>
+                <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
+                <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span> 님 환영합니다</li>
+                <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/login">로그아웃</a></li>
+                <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
+                <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
             </ul>
           </nav>
         </div>
     </header>
 
     <div class="container">
-        <form class="row gap-5">
+        <form class="row gap-5" action="/post/save" method="post">
+            <input type="hidden" id="postId" name="postId" th:if="${post != null}" th:value="${post.id}" />
+            <input type="hidden" id="id" name="id" th:if="${post != null}" th:value="@{${#authentication.principal.id}}" />
+            <input type="hidden" id="writer" name="writer" th:value="@{${#authentication.principal.userId}}"/>
             <div class="form-floating">
-                <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea">
-                <label for="floatingTextarea">제목</label>
+                <div>제목</div>
+                <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="title">
+<!--                <label for="floatingTextarea" th:if="${post == null}">제목</label>-->
+
+                <label for="floatingTextarea" th:if="${post != null}" th:text="${post.title}"></label>
               </div>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
-                <label for="floatingTextarea">상세 내용</label>
+                <div>내용</div>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="content"></textarea>
+<!--                <label for="floatingTextarea" th:if="${post == null}">상세 내용</label>-->
+                <label for="floatingTextarea" th:if="${post != null}" th:text="${post.content}"></label>
             </div>
             <div class="col-12" id="button">
                 <button type="submit" class="btn btn-primary">완료</button>

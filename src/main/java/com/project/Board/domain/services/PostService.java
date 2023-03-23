@@ -64,4 +64,12 @@ public class PostService {
         return postMapper.findAll();
     }
 
+    /**
+     * 내가 쓴 게시글 리스트 조회
+     * @return 내 게시글 리스트
+     */
+    public List<PostResponse> findMyPost() {
+        return postMapper.findMine();
+    }
+
 }

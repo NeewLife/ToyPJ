@@ -15,10 +15,12 @@ public class PostServiceTest {
     @Test
     void save() {
         PostRequest params = new PostRequest();
+        params.setPostId(10);
         params.setTitle("1번 게시글 제목");
         params.setContent("1번 게시글 내용");
         params.setWriter("테스터");
-        params.setNoticeYn(false);
+        params.setId(24);
+        System.out.println(params.toString());
         postService.savePost(params);
     }
 

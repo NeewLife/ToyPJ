@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/header :: main-head"> </head>
 <body>
     <header id="header">
@@ -9,9 +10,12 @@
           </div>
           <nav class="navbar">
             <ul id="navbar">
-              <li><a class="nav-link" href="/post/post">게시판</a></li>
-              <li><a class="nav-link" href="/post/login">로그인</a></li>
-              <li><a class="nav-link" href="/post/register">회원가입</a></li>
+                <li><a class="nav-link" href="/post/post">게시판</a></li>
+                <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
+                <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span> 님 환영합니다</li>
+                <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/login">로그아웃</a></li>
+                <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
+                <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
             </ul>
           </nav>
         </div>

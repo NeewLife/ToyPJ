@@ -16,5 +16,5 @@ public class PostResponse {
     private LocalDateTime modifiedDate;
     private boolean deleteYn;
     private boolean noticeYn;
-    private int userId;
+    private int id;
 }

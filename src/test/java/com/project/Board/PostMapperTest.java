@@ -21,12 +21,10 @@ public class PostMapperTest {
     @Test
     void save() {
         PostRequest params = new PostRequest();
-        params.setPostId(1);
+        params.setPostId(6);
         params.setTitle("1번 게시글 제목");
         params.setContent("1번 게시글 내용");
-        params.setWriter("테스터");
-        params.setNoticeYn(false);
-        params.setUserId(3);
+        params.setWriter("1234");
         postMapper.save(params);
 
         List<PostResponse> posts = postMapper.findAll();
@@ -53,7 +51,6 @@ public class PostMapperTest {
         params.setTitle("1번 게시글 제목 수정합니다.");
         params.setContent("1번 게시글 내용 수정합니다.");
         params.setWriter("도뎡이");
-        params.setNoticeYn(true);
         postMapper.update(params);
 
         // 2. 게시글 상세정보 조회

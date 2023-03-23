@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/header :: main-head">
-    <title>게시판</title>
 </head>
 <body>
     <header id="header">
@@ -12,8 +11,11 @@
           <nav class="navbar">
             <ul id="navbar">
               <li><a class="nav-link" href="/post/post">게시판</a></li>
-              <li><a class="nav-link" href="/post/login">로그인</a></li>
-              <li><a class="nav-link" href="/post/register">회원가입</a></li>
+              <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
+              <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span> </li>
+              <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/login">로그아웃</a></li>
+              <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
+              <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
             </ul>
           </nav>
         </div>
@@ -32,52 +34,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">11234441</th>
-                    <td class="title"><a href="/post/view"><p>Mark</p></a></td>
-                    <td class="writer">Otto</td>
-                    <td class="writeDate">03.09</td>
-                    <td class="viewCount">3814</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td class="title"><a href="/post/view"><p>Jacob</p></a></td>
-                    <td class="writer">Thornton</td>
-                    <td class="writeDate">01.13</td>
-                    <td class="viewCount">119</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td class="title"><a href="/post/view"><p>Larry the Bird</p></a></td>
-                    <td class="writer">Larry the Bird</td>
-                    <td class="writeDate">22.12.25</td>
-                    <td class="viewCount">1024</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">512345</th>
-                    <td class="title"><a href="/post/view"><p>미안하다 이거 보여주려고</p></a></td>
-                    <td class="writer">나루토사스케</td>
-                    <td class="writeDate">03.07</td>
-                    <td class="viewCount">2074</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1182</th>
-                    <td class="title"><a href="/post/view"><p>넘버원 배구단원 모집</p></a></td>
-                    <td class="writer">오세영</td>
-                    <td class="writeDate">03.07</td>
-                    <td class="viewCount">1</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">91</th>
-                    <td class="title"><a href="/post/view"><p>넘버원 배구단원 모집</p></a></td>
-                    <td class="writer">오세영</td>
-                    <td class="writeDate">03.05</td>
-                    <td class="viewCount">3</td>
+                  <tr th:each="row, status : ${posts}">
+                    <th scope="row" th:text="${status.size - status.index}"></th>
+                    <td class="title" ><a th:href="@{/post/view(id=${row.postId})}"><p th:text="${row.title}" style="margin : 0px"></p></a></td>
+                    <td class="writer" th:text="${row.writer}"></td>
+                    <td class="writeDate" th:text="${#temporals.format( row.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
+                    <td class="viewCount" th:text="${row.viewCount}"></td>
                   </tr>
                 </tbody>
               </table>
               <div class="col-12" id="button">
-                <button type="submit" class="btn btn-primary">글쓰기</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/post/write'" >글쓰기</button>
               </div>
         </article>
     </main>
