@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 
-<body th:content>
+<body>
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -23,13 +23,12 @@
         <ul id="navbar">
           <li><a class="nav-link" href="/post/post">게시판</a></li>
           <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
-          <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span> 님 환영합니다</li>
-          <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/login">로그아웃</a></li>
+          <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span></li>
+          <li><form method="post" action="/logout" sec:authorize="isAuthenticated()"><button type="submit">로그아웃</button></form></li>
           <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
           <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
         </ul>
       </nav>
-
     </div>
   </header><!-- End #header -->
 

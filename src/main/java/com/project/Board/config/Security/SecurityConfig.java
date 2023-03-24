@@ -34,15 +34,9 @@ public class SecurityConfig {
                     .defaultSuccessUrl("/post/index", true)
                     .permitAll()
                 )
-                .logout(withDefaults()
-                );
-//                .sessionManagement(
-//                        s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                                .sessionFixation(sf ->sf.changeSessionId())
-//                                .maximumSessions(1)
-//                                .maxSessionsPreventsLogin(true)
-//                                .expiredUrl("/session-expired")
-//                );
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/post/login");
         return http.build();
     }
 }

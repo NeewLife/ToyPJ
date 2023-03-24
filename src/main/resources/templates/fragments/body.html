@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body th:fragment="main-header">
+  <header id="header">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <h1 class="text-light"><a href="/post/index">WeBuild</a></h1>
+      </div>
+      <nav class="navbar">
+        <ul id="navbar">
+          <li><a class="nav-link" href="/post/post">게시판</a></li>
+          <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
+          <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span></li>
+          <li><form method="post" action="/logout" sec:authorize="isAuthenticated()"><button type="submit"><span>로그아웃</span></button></form></li>
+          <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
+          <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <th:block layout:fragment="content"></th:block>
+</body>
+</html>
