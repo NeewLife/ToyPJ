@@ -1,8 +1,7 @@
 package com.project.Board.domain.dto.user;
 
-import com.project.Board.config.Security.SimplePasswordEncoder;
 import lombok.Data;
-import org.springframework.security.crypto.password.PasswordEncoder;
+;
 
 @Data
 public class MemberRequest {            // 얘는 Member를 생성, 수정때 쓸 객체

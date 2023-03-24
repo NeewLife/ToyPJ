@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/auth")
@@ -32,5 +31,24 @@ public class AuthorizationController {
     public String userSignUp(Model model, MemberRequest memberRequest){
         memberService.signup(memberRequest);
         return "redirect:/post/login";
+    }
+
+    @PostMapping("/checkDup")
+    @ResponseBody
+    public String checkDuplicate(@RequestParam("userId") String userId,
+                                 @RequestParam("nickname") String nickname){
+        String result = "N";
+        int checkId = memberService.checkId(userId);
+        int checkNickname = memberService.checkNickname(nickname);
+        if (checkId != 0){
+            if (checkNickname != 0) {
+                result = "NICK";
+                return result;
+            }
+            result = "ID";
+            return result;
+        }
+        System.out.println(result);
+        return result;
     }
 }

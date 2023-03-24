@@ -3,19 +3,17 @@ package com.project.Board.domain.controllers;
 import com.project.Board.domain.dto.post.PostRequest;
 import com.project.Board.domain.dto.post.PostResponse;
 import com.project.Board.domain.dto.user.Member;
-import com.project.Board.domain.services.PostService;
 import com.project.Board.domain.dto.user.MemberRequest;
 import com.project.Board.domain.services.MemberService;
+import com.project.Board.domain.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -62,6 +60,12 @@ public class PostController {
         System.out.println("post/update 실행");
         System.out.println(params.toString());
         postService.updatePost(params);
+        return "redirect:/post/post";
+    }
+
+    @PostMapping("/post/delete")
+    public String deletePost(@RequestParam final int postId) {
+        postService.deletePost(postId);
         return "redirect:/post/post";
     }
 

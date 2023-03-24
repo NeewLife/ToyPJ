@@ -10,16 +10,6 @@
             <span class="col-3">
                 <div class="card">
                     <div class="card-header">
-                      게시글 번호
-                    </div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0" th:text="${posts.postId}"></blockquote>
-                    </div>
-                  </div>
-            </span>
-            <span class="col-3">
-                <div class="card">
-                    <div class="card-header">
                       글쓴이
                     </div>
                     <div class="card-body">
@@ -67,10 +57,13 @@
                     </div>
                   </div>
             </span>
-            <div id="button" style="text-align: center;">
-                <a th:href="@{/post/write( postId = ${posts.postId} )}" class="btn btn-primary">수정</a>
-                <button type="submit" class="btn btn-primary">삭제</button>
-            </div>
+            <form id="deleteForm" action="/post/delete" th:if="${{#authentication.principal.id == posts.id}}" method="post">
+                <input type="hidden" id="postId" name="postId" th:value="${posts.postId}" />
+                <div id="button" style="text-align: center;">
+                    <a th:href="@{/post/write( postId = ${posts.postId} )}" class="btn btn-primary">수정</a>
+                    <button type="button" onclick="deletePost()" class="btn btn-primary">삭제</button>
+                </div>
+            </form>
         </table>
 
         <div class="numbox">전체 댓글 <span id="total_reply">2</span>개</div>
@@ -85,7 +78,7 @@
             <li class="rp_date">2023.03.06 19:23:55</li>
         </ul>
         <div class="reply_write">
-            <label for="inputCity" class="form-label">댓글</label>
+            <label class="form-label">댓글</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <div id="rp_button">
@@ -93,4 +86,19 @@
         </div>
     </div>
 </th:block>>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function deletePost() {
+
+          if ( !confirm([[ ${posts.postId} ]] + '번 게시글을 삭제할까요?') ) {
+            return false;
+          }
+          document.getElementById('deleteForm').submit();
+        }
+
+        /*]]>*/
+        </script>
+</th:block>
 </html>

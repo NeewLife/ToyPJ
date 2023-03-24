@@ -18,6 +18,12 @@ public class MemberService {
     private PasswordEncoder passwordEncoder;
 
 
+    public int checkId(String userId){
+        return userMapper.checkId(userId);
+    }
+    public int checkNickname(String nickname){
+        return userMapper.checkNickname(nickname);
+    }
 
     public void signup(MemberRequest memberRequest){
         memberRequest.setPassword(passwordEncoder.encode(memberRequest.getPassword()));

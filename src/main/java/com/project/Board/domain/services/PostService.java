@@ -51,9 +51,9 @@ public class PostService {
      * @param id - PK
      * @return PK
      */
-    public int deletePost(final int id) {
-        postMapper.deleteById(id);
-        return id;
+    public int deletePost(final int postId) {
+        postMapper.deleteById(postId);
+        return postId;
     }
 
     /**

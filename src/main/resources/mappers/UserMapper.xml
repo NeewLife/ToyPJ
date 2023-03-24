@@ -22,12 +22,28 @@
             ( #{name}, #{sex}, #{ageGroup}, #{userId}, #{password}, #{nickname}, #{height}, #{weight})
     </insert>
 
+    <select id="checkId" parameterType="String" resultType="int">
+        SELECT COUNT(user_id)
+        FROM
+            `user`
+        WHERE
+            user_id = ${value}
+    </select>
+
+    <select id="checkNickname" parameterType="String" resultType="int">
+        SELECT COUNT(nickname)
+        FROM
+            `user`
+        WHERE
+            nickname = ${value}
+    </select>
+
     <select id="loginUser" resultType="com.project.Board.domain.dto.user.Member">
         SELECT
             <include refid="userColumns" />
         FROM
             user
         WHERE
-            user_id =#{userId}
+            user_id = #{userId}
     </select>
 </mapper>

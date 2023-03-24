@@ -12,4 +12,8 @@ public interface UserMapper {
 
 
     Optional<Member> loginUser(String username);
+
+    int checkId(String userId);
+
+    int checkNickname(String nickname);
 }
