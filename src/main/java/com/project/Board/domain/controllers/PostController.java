@@ -101,7 +101,10 @@ public class PostController {
 
     private final MemberService memberService;
     @GetMapping("/post/login")
-    public String loginPage() {
+    public String loginPage(@AuthenticationPrincipal Member member) {
+        if (member != null){
+            return "post/index";
+        }
         return "post/login";
     }
 
