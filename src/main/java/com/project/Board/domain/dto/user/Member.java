@@ -18,6 +18,7 @@ public class Member implements UserDetails {
     private String nickname;
     private int height;
     private int weight;
+    private int deleteYn;
     private String roles;
 
 

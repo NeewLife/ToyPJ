@@ -8,29 +8,47 @@
       <div class="container" >
         <form class="row gap-1">
             <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="니 이메일" disabled>
+                <label for="userId" class="form-label">Email</label>
+                <input type="email" class="form-control" id="userId" th:value="@{${#authentication.principal.userId}}" disabled>
             </div>
             <div class="col-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="니 비번" disabled>
+                <label for="sex" class="form-label">성별</label>
+                <input type="text" class="form-control" id="sex" th:value="@{${#authentication.principal.sex}}" disabled>
             </div>
             <div class="col-6">
-                <label for="inputAddress" class="form-label">키</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="188.2cm">
+                <label for="ageGroup" class="form-label">연령대</label>
+                <input type="text" class="form-control" id="ageGroup" th:value="@{${#authentication.principal.ageGroup}}" disabled>
             </div>
             <div class="col-6">
-                <label for="inputAddress2" class="form-label">몸무게</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="68.2kg">
+                <label for="height" class="form-label">키</label>
+                <input type="text" class="form-control" id="height" th:value="@{${#authentication.principal.height}}" disabled>
             </div>
             <div class="col-6">
-                <label for="inputCity" class="form-label">활동 지역</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="서울시">
+                <label for="weight" class="form-label">몸무게</label>
+                <input type="text" class="form-control" id="weight" th:value="@{${#authentication.principal.weight}}" disabled>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">내 정보수정</button>
+                <button type="button" id="modify" class="btn btn-primary">내 정보수정</button>
+                <button type="button" id="withdrawal" class="btn btn-warning">회원탈퇴</button>
             </div>
         </form>
     </div>
-</th:block>>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script>
+        /*<![CDATA[*/
+
+            $('#modify').click(function(){
+                console.log("작동됨");
+                $('#ageGroup', '#height', '#weight').attr("disabled", false);
+                $('#ageGroup').trigger("focus");
+                $('#modify').after("<button type="submit" id="change" class="btn btn-primary">내 정보수정</button>");
+                $('#modify').remove();
+            }
+
+        /*]]>*/
+    </script>
+</th:block>
 </html>

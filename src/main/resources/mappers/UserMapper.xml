@@ -13,6 +13,7 @@
         ,   height
         ,   weight
         ,   roles
+        ,   delete_yn
     </sql>
 
     <insert id="joinUser" parameterType="com.project.Board.domain.dto.user.MemberRequest">
@@ -45,5 +46,7 @@
             user
         WHERE
             user_id = #{userId}
+        AND
+            delete_yn = 0
     </select>
 </mapper>
