@@ -9,7 +9,7 @@
         <form class="row gap-4" action="/auth/register" method="post" >
             <div class="col-9">
                 <label for="inputName" class="form-label">실명</label>
-                <input type="text" class="form-control" id="inputName" name="name" required>
+                <input type="text" class="form-control" id="inputName" name="name" maxlength="4" required>
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputSex">성별</label>
@@ -64,12 +64,21 @@
     <script>
         /*<![CDATA[*/
 
+
             $(function(){
 
                 $("#checkDup").click(function(){
 
                     let userId = $("#userId").val();
                     let nickname = $("#nickname").val();
+
+<!--                정규표현식-->
+                    let regex = /^[가-힣]*$/;
+                    if(!regex.test($('#inputName').val())){
+                        alert('이름은 한글로 입력해주세요');
+                        return false;
+                    }
+
 
                     $.ajax({
                         type:'post', //post 형식으로 controller 에 보내기위함!!
