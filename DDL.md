@@ -18,10 +18,11 @@ CREATE TABLE `user` (
 	`sex`	varchar(6)	NULL	COMMENT '성별',
 	`age_group`	int(1)	NOT NULL	COMMENT '연령대',
 	`user_id`	varchar(15)	NOT NULL	COMMENT '아이디',
-	`password`	varchar(15)	NOT NULL	COMMENT '비밀번호',
+	`password`	varchar(100)	NOT NULL	COMMENT '비밀번호',
 	`nickname`	varchar(15)	NOT NULL	COMMENT '닉네임',
-	`height`	dec(4,1)	NULL	COMMENT '키',
-	`weight`	dec(4,1)	NULL	COMMENT '몸무게',
+	`height`	int()	NULL	COMMENT '키',
+	`weight`	int()	NULL	COMMENT '몸무게',
+	`roles`		varchar(10)		DEFAULT 'USER'		COMMENT '권한'
 	primary key (`id`)
 );
 
