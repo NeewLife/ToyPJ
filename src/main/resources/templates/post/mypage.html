@@ -38,17 +38,17 @@
 
 <th:block layout:fragment="script">
     <script>
-        /*<![CDATA[*/
 
-            $('#modify').click(function(){
-                console.log("작동됨");
-                $('#ageGroup', '#height', '#weight').attr("disabled", false);
-                $('#ageGroup').trigger("focus");
-                $('#modify').after("<button type="submit" id="change" class="btn btn-primary">내 정보수정</button>");
-                $('#modify').remove();
-            }
+        $('#modify').click(function(){
+            console.log("작동됨");
+            $('#ageGroup').attr("disabled", false);
+            $('#height').attr("disabled", false);
+            $('#weight').attr("disabled", false);
+            $('#ageGroup').trigger("focus");
+            $('#modify').after('<button type="submit" id="change" class="btn btn-primary">수정하기</button>');
+            $('#modify').remove();
+        })
 
-        /*]]>*/
     </script>
 </th:block>
 </html>

@@ -26,8 +26,7 @@ public class PostController {
     @GetMapping("/post/write")
     public String openPostWrite(
             @RequestParam (value = "postId", required = false) final Integer postId, Model model
-            , @AuthenticationPrincipal Member member
-    ) {
+            , @AuthenticationPrincipal Member member) {
         if (postId != null){
             PostResponse posts = postService.findPostById(postId);
             System.out.println(member.getId());

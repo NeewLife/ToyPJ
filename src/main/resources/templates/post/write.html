@@ -45,7 +45,7 @@
         }
 
         function savePost() {
-            alert('hi');
+            alert('게시글이 저장되었습니다');
             const form = document.getElementById('saveForm');
             document.getElementById('saveBtn').disabled = true;
             form.action = [[ ${post == null} ]] ? '/post/save' : '/post/update';
