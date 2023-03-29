@@ -13,6 +13,8 @@ public interface UserMapper {
 
     Optional<Member> loginUser(String userId);
 
+    Member findByUserId(String userId);
+
     int checkId(String userId);
 
     int checkNickname(String nickname);

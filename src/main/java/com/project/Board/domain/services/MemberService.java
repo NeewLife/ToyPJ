@@ -39,6 +39,10 @@ public class MemberService {
         return userMapper.loginUser(userId);
     }
 
+    public Member findByUserId(String userId){
+        return userMapper.findByUserId(userId);
+    }
+
     @Transactional
     public void update(MemberRequest member){
         userMapper.update(member);

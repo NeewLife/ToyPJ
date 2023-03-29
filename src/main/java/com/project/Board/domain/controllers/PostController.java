@@ -76,10 +76,10 @@ public class PostController {
 
     @GetMapping("/post/mypage")
     public String openMyPage(@AuthenticationPrincipal Member member, Model model) {
-        Optional<Member> memberRequest = memberService.loginUser(member.getUserId());
-        System.out.println("memberRequest.get() : " + memberRequest.get());
-        System.out.println("memberRequest.get().getUserId() : " + memberRequest.get().getUserId());
-        model.addAttribute("member", memberRequest.get());
+        Member memberRequest = memberService.findByUserId(member.getUserId());
+        System.out.println("memberRequest.get() : " + memberRequest);
+        System.out.println("memberRequest.get().getUserId() : " + memberRequest);
+        model.addAttribute("member", memberRequest);
         System.out.println("model : " + model);
         return "post/mypage";
     }
