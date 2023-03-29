@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -74,7 +75,12 @@ public class PostController {
     }
 
     @GetMapping("/post/mypage")
-    public String openMyPage(Model model) {
+    public String openMyPage(@AuthenticationPrincipal Member member, Model model) {
+        Optional<Member> memberRequest = memberService.loginUser(member.getUserId());
+        System.out.println("memberRequest.get() : " + memberRequest.get());
+        System.out.println("memberRequest.get().getUserId() : " + memberRequest.get().getUserId());
+        model.addAttribute("member", memberRequest.get());
+        System.out.println("model : " + model);
         return "post/mypage";
     }
 

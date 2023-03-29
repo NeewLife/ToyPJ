@@ -1,12 +1,14 @@
 package com.project.Board.domain.services;
 
-import com.project.Board.domain.mappers.UserMapper;
 import com.project.Board.domain.dto.user.Member;
 import com.project.Board.domain.dto.user.MemberRequest;
+import com.project.Board.domain.mappers.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ public class MemberService {
     private final UserMapper userMapper;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    private AuthenticationManager authenticationManager;
 
 
     public int checkId(String userId){
@@ -32,11 +35,12 @@ public class MemberService {
         userMapper.joinUser(memberRequest);
     }
 
-    public Optional<Member> loginUser(String username) {
-        return userMapper.loginUser(username);
+    public Optional<Member> loginUser(String userId) {
+        return userMapper.loginUser(userId);
     }
 
-    public void update(Member member){
+    @Transactional
+    public void update(MemberRequest member){
         userMapper.update(member);
     }
 

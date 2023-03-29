@@ -11,11 +11,11 @@ public interface UserMapper {
     void joinUser(MemberRequest memberRequest);
 
 
-    Optional<Member> loginUser(String username);
+    Optional<Member> loginUser(String userId);
 
     int checkId(String userId);
 
     int checkNickname(String nickname);
 
-    void update(Member member);
+    void update(MemberRequest member);
 }

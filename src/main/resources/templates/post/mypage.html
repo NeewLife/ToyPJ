@@ -7,18 +7,22 @@
 
       <div class="container" >
         <form class="row gap-1" action="/auth/update" method="post">
+            <input type="hidden" id="id" name="id" th:value="${member.id}}" />
+<!--            <input type="hidden" id="name" name="name" th:value="@{${#authentication.principal.name}}" />-->
+<!--            <input type="hidden" id="userId" name="userId" th:value="@{${#authentication.principal.userId}}" />-->
+<!--            <input type="hidden" id="password" name="password" th:value="@{${#authentication.principal.password}}" />-->
             <div class="col-md-6">
-                <label for="userId" class="form-label">Email</label>
-                <input type="email" class="form-control" id="userId" th:value="@{${#authentication.principal.userId}}" disabled>
+                <label for="nickname" class="form-label">닉네임</label>
+                <input type="text" class="form-control" id="nickname" th:value="${member.nickname}" disabled>
             </div>
             <div class="col-6">
                 <label for="sex" class="form-label">성별</label>
-                <input type="text" class="form-control" id="sex" th:value="@{${#authentication.principal.sex}}" name="sex" disabled>
+                <input type="text" class="form-control" id="sex" th:value="${member.sex}" name="sex" disabled>
             </div>
             <div class="col-6">
                 <label for="ageGroup" class="form-label">연령대</label>
-                <select class="form-select" id="ageGroup" th:value="@{${#authentication.principal.ageGroup}}" name="ageGroup" disabled required>
-                    <option value="">현재 연령대</option>
+                <select class="form-select" id="ageGroup" th:value="${member.ageGroup}" name="ageGroup" disabled required>
+                    <option th:text="${'현재 연령대 : ' + member.ageGroup + '대'}"></option>
                     <option value="10">10대</option>
                     <option value="20">20대</option>
                     <option value="30">30대</option>
@@ -29,11 +33,11 @@
             </div>
             <div class="col-6">
                 <label for="height" class="form-label">키</label>
-                <input type="text" class="form-control" id="height" th:value="@{${#authentication.principal.height}}" name="height" disabled>
+                <input type="text" class="form-control" id="height" th:value="${member.height}" name="height" disabled>
             </div>
             <div class="col-6">
                 <label for="weight" class="form-label">몸무게</label>
-                <input type="text" class="form-control" id="weight" th:value="@{${#authentication.principal.weight}}" name="weight" disabled>
+                <input type="text" class="form-control" id="weight" th:value="${member.weight}" name="weight" disabled>
             </div>
             <div class="col-12">
                 <button type="button" id="modify" class="btn btn-primary">내 정보수정</button>

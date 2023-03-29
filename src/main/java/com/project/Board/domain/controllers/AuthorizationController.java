@@ -4,12 +4,13 @@ import com.project.Board.domain.dto.user.Member;
 import com.project.Board.domain.dto.user.MemberRequest;
 import com.project.Board.domain.services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/auth")
@@ -55,12 +56,10 @@ public class AuthorizationController {
     }
 
     @PostMapping("/update")
-    public String userUpdate(@AuthenticationPrincipal Member member, Model model){
+    public String userUpdate(MemberRequest member){
         System.out.println("일단 컨트롤러 호출 성공");
-        System.out.println(member.toString());
-        model.addAttribute(member);
+        System.out.println("update의 member : " + member.toString());
         memberService.update(member);
-        System.out.println(model);
         return "redirect:/post/mypage";
     }
 }
