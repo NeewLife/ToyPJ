@@ -4,6 +4,8 @@ import com.project.Board.domain.dto.user.Member;
 import com.project.Board.domain.dto.user.MemberRequest;
 import com.project.Board.domain.services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,5 +52,15 @@ public class AuthorizationController {
         }
         System.out.println(result);
         return result;
+    }
+
+    @PostMapping("/update")
+    public String userUpdate(@AuthenticationPrincipal Member member, Model model){
+        System.out.println("일단 컨트롤러 호출 성공");
+        System.out.println(member.toString());
+        model.addAttribute(member);
+        memberService.update(member);
+        System.out.println(model);
+        return "redirect:/post/mypage";
     }
 }

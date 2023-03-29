@@ -22,7 +22,7 @@ CREATE TABLE `user` (
 	`nickname`	varchar(15)	NOT NULL	COMMENT '닉네임',
 	`height`	int()	NULL	COMMENT '키',
 	`weight`	int()	NULL	COMMENT '몸무게',
-	`delete_yn`	tinyint(1)		NULL	DEFAULT 0	COMMENT '유저 삭제 여부'
+	`delete_yn`	tinyint(1)		NULL	DEFAULT 0	COMMENT '유저 삭제 여부',
 	`roles`		varchar(10)		DEFAULT 'USER'		COMMENT '권한'
 	primary key (`id`)
 );

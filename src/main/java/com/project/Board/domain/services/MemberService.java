@@ -36,4 +36,8 @@ public class MemberService {
         return userMapper.loginUser(username);
     }
 
+    public void update(Member member){
+        userMapper.update(member);
+    }
+
 }

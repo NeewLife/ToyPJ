@@ -47,7 +47,8 @@
         ,   title = #{title}
         ,   content = #{content}
         ,   writer = #{writer}
-        ,   post_id = #{postId}
+        WHERE
+            post_id = #{postId}
     </update>
 
     <delete id="deleteById" parameterType="Integer">

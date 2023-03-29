@@ -49,4 +49,14 @@
         AND
             delete_yn = 0
     </select>
+
+    <update id="update" parameterType="com.project.Board.domain.dto.user.Member">
+        UPDATE `user`
+        SET
+            age_group = #{ageGroup}
+        ,   height = #{height}
+        ,   weight = #{weight}
+        WHERE
+            id = #{id}
+    </update>
 </mapper>

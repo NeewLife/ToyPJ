@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class MemberRequest {            // 얘는 Member를 생성, 수정때 쓸 객체
 
+    private Long id;
     private String name;
     private String sex;
     private int ageGroup;

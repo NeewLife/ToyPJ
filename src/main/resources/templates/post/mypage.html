@@ -6,26 +6,34 @@
 <th:block layout:fragment="content">
 
       <div class="container" >
-        <form class="row gap-1">
+        <form class="row gap-1" action="/auth/update" method="post">
             <div class="col-md-6">
                 <label for="userId" class="form-label">Email</label>
                 <input type="email" class="form-control" id="userId" th:value="@{${#authentication.principal.userId}}" disabled>
             </div>
             <div class="col-6">
                 <label for="sex" class="form-label">성별</label>
-                <input type="text" class="form-control" id="sex" th:value="@{${#authentication.principal.sex}}" disabled>
+                <input type="text" class="form-control" id="sex" th:value="@{${#authentication.principal.sex}}" name="sex" disabled>
             </div>
             <div class="col-6">
                 <label for="ageGroup" class="form-label">연령대</label>
-                <input type="text" class="form-control" id="ageGroup" th:value="@{${#authentication.principal.ageGroup}}" disabled>
+                <select class="form-select" id="ageGroup" th:value="@{${#authentication.principal.ageGroup}}" name="ageGroup" disabled required>
+                    <option value="">현재 연령대</option>
+                    <option value="10">10대</option>
+                    <option value="20">20대</option>
+                    <option value="30">30대</option>
+                    <option value="40">40대</option>
+                    <option value="50">50대</option>
+                    <option value="60">50대 이상</option>
+                </select>
             </div>
             <div class="col-6">
                 <label for="height" class="form-label">키</label>
-                <input type="text" class="form-control" id="height" th:value="@{${#authentication.principal.height}}" disabled>
+                <input type="text" class="form-control" id="height" th:value="@{${#authentication.principal.height}}" name="height" disabled>
             </div>
             <div class="col-6">
                 <label for="weight" class="form-label">몸무게</label>
-                <input type="text" class="form-control" id="weight" th:value="@{${#authentication.principal.weight}}" disabled>
+                <input type="text" class="form-control" id="weight" th:value="@{${#authentication.principal.weight}}" name="weight" disabled>
             </div>
             <div class="col-12">
                 <button type="button" id="modify" class="btn btn-primary">내 정보수정</button>

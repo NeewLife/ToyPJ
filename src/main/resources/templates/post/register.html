@@ -82,6 +82,8 @@
                         alert('숫자로 입력해주세요');
                         return false;
                     }
+                    $('#inputHeight').val(Math.floor($('#inputHeight').val()));
+                    $('#inputWeight').val(Math.floor($('#inputWeight').val()));
 
 
                     $.ajax({
