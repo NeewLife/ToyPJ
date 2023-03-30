@@ -18,17 +18,17 @@
 
 - 테이블명 = “user”
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a9b7b80-8693-4d31-8bcf-0d945af8923b/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/107593357/228719227-c8eadd50-7ba6-4265-896d-44445bc9bba5.png)
 
 - 테이블명 = “pj_post”
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d32704e-642d-4f5d-b8d9-13648305fb10/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/107593357/228719283-a05d2880-dec8-47eb-b2f2-ba65a8c4d84f.png)
 
 삭제를 진행할 경우 테이블에서 물리적으로 제거하기보다 delete_yn 컬럼값을 변경하여서 논리적인 삭제를 진행하였음
 
 ### - 로그인 페이지
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e1100b6-93fa-480a-a24c-b184cd52f1bf/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/107593357/228719321-4969f610-a6e7-449e-b246-6469dd72b6f9.png)
 
 - 로그인이 되어있지 않을 시에 강제로 로그인페이지를 호출
 - 로그인이 되어있다면 임의로 이 URI 호출시 메인 페이지를 호출
@@ -37,7 +37,7 @@
 
 ### - 회원가입 페이지
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dc36ac7d-b67b-4851-935e-dd390fce3720/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/107593357/228719361-5f53ba9e-b98f-4b5f-befe-7cdab64cea69.png)
 
 - 실명은 정규표현식을 통해 한글 작성만 가능
 - 키, 몸무게는 정수로 변환해서 받음
@@ -45,42 +45,42 @@
 
 ### - 메인화면(기능구상중)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/48bd16e1-ea36-4b8a-8645-c0ab59a540f8/Untitled.png)
+![Untitled 4](https://user-images.githubusercontent.com/107593357/228719365-7a39ad84-c5c7-4e38-acc0-4222fab68c89.png)
 
 - 로그인 성공 후 가장 먼저 나오는 페이지
 - 현재 로그인 한 사람의 닉네임이 상단바에 노출됨
 
 ### - 게시판 페이지
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/70cba9b6-b273-4542-a631-7ff5f35d92ad/Untitled.png)
+![Untitled 5](https://user-images.githubusercontent.com/107593357/228719372-435f6ecd-2e20-4863-ae06-0424711868d0.png)
 
 - 작성한 글 목록 중 삭제여부가 1(삭제됨)이 아닌 게시글들을 DB에서 조회하여 가져온다.
 
 ### - 상세 페이지
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2c86f44e-b531-4df7-abf6-4670457cc9f9/Untitled.png)
+![Untitled 6](https://user-images.githubusercontent.com/107593357/228719379-3e35cc12-bf35-4e7d-bb64-c89ad407c583.png)
 
 - 댓글 기능 추후 구현예정
 - 글쓴이 == 로그인한 사용자 일 경우 수정, 삭제버튼 활성화
 
 ### - 글쓰기 페이지
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2060827f-39f2-4335-9e9c-3f06218c3d67/Untitled.png)
+![Untitled 7](https://user-images.githubusercontent.com/107593357/228719382-832546e5-e895-486b-9385-66129677a0d3.png)
 
 - 새로운 글을 쓸 경우의 페이지는 공백상태
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/70736fab-21e9-49d8-8b72-620d42e37179/Untitled.png)
+![Untitled 8](https://user-images.githubusercontent.com/107593357/228719519-1eb7b53c-a337-4e57-b601-d3e87f715861.png)
 
 - 기존 글 수정일 경우 제목 및 내용을 불러와서 수정가능
 
 ### - 마이페이지
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/95036bbf-4bd2-4ce5-8162-c5b2baf30154/Untitled.png)
+![Untitled 9](https://user-images.githubusercontent.com/107593357/228719580-fbd47808-bc46-4d52-af36-804b6d547724.png)
 
 - 내 정보수정 버튼을 누르면 연령대, 키, 몸무게 부분이 수정가능하게 활성화
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33e688d2-606e-441e-8912-7da24abe696c/Untitled.png)
+![Untitled 10](https://user-images.githubusercontent.com/107593357/228719591-9cbb19e6-cd9c-4263-a839-b1cf5281fbf6.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4eaab78b-cb7e-4d29-8646-b15f4939ae26/Untitled.png)
+![Untitled 11](https://user-images.githubusercontent.com/107593357/228719602-10b00584-ee77-4a00-aa80-9732bc8a141d.png)
 
 - 회원탈퇴 버튼을 누를 시 alert 메세지를 띄우고 확인을 누르면 로그아웃과 동시에 논리적인 삭제를 진행한다.
