@@ -16,14 +16,14 @@ CREATE TABLE `user` (
 	`id`	int(10) auto_increment	NOT NULL	COMMENT '사용자식별번호',
 	`name`	varchar(20)	NOT NULL	COMMENT '사용자 이름',
 	`sex`	varchar(6)	NULL	COMMENT '성별',
-	`age_group`	int(1)	NOT NULL	COMMENT '연령대',
+	`age_group`	int(10)	NOT NULL	COMMENT '연령대',
 	`user_id`	varchar(15)	NOT NULL	COMMENT '아이디',
 	`password`	varchar(100)	NOT NULL	COMMENT '비밀번호',
 	`nickname`	varchar(15)	NOT NULL	COMMENT '닉네임',
-	`height`	int()	NULL	COMMENT '키',
-	`weight`	int()	NULL	COMMENT '몸무게',
+	`height`	int(10)	NULL	COMMENT '키',
+	`weight`	int(10)	NULL	COMMENT '몸무게',
 	`delete_yn`	tinyint(1)		NULL	DEFAULT 0	COMMENT '유저 삭제 여부',
-	`roles`		varchar(10)		DEFAULT 'USER'		COMMENT '권한'
+	`roles`		varchar(10)		DEFAULT 'USER'		COMMENT '권한',
 	primary key (`id`)
 );
 
