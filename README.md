@@ -1,5 +1,7 @@
 # 배구 동호회 게시판
 
+[프로젝트 사이트](http://34.64.58.252:8081/post/login)
+
 [상세정보 및 기획](https://careful-manuscript-b51.notion.site/5afb7d33d5b5457bb55f1763c4a16a0a)
 
 
@@ -8,11 +10,12 @@
 - JAVA 17
 - Spring Boot  3.0.4
 
-## 실행방법
+## 로컬 실행방법
 
 1. [DDL.md](https://github.com/NeewLife/ToyPJ/blob/main/DDL.md) 파일을 열어서 쿼리문을 실행하여 테이블을 생성한다.(MySQL 사용)
 2. [application.properties](https://github.com/NeewLife/ToyPJ/blob/main/src/main/resources/application.properties) 에서 DB 연결할 username, password 를 자신의 DB에 맞게 변경한다.
-3. `ToyPjApplication` 실행
+3. jdbc-url 부분을 "spring.datasource.hikari.jdbc-url=jdbc:mysql://localhost:3306/pj_post?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true" 으로 변경한다.
+4. `ToyPjApplication` 실행
 
 ### DB 테이블(MySQL 사용)
 
