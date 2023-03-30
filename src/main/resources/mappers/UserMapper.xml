@@ -70,4 +70,12 @@
         WHERE
             id = #{id}
     </update>
+
+    <update id="delete" parameterType="com.project.Board.domain.dto.user.MemberRequest">
+        UPDATE `user`
+        SET
+            delete_yn = 1
+        WHERE
+            id = #{id}
+    </update>
 </mapper>

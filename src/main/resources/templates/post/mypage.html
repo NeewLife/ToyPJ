@@ -6,7 +6,7 @@
 <th:block layout:fragment="content">
 
       <div class="container" >
-        <form class="row gap-1" action="/auth/update" method="post" th:each="member : ${member}">
+        <form class="row gap-1" method="post" th:each="member : ${member}">
             <input type="hidden" id="id" name="id" th:value="${member.id}" />
 <!--            <input type="hidden" id="name" name="name" th:value="@{${#authentication.principal.name}}" />-->
 <!--            <input type="hidden" id="userId" name="userId" th:value="@{${#authentication.principal.userId}}" />-->
@@ -41,7 +41,7 @@
             </div>
             <div class="col-12">
                 <button type="button" id="modify" class="btn btn-primary">내 정보수정</button>
-                <button type="button" id="withdrawal" class="btn btn-warning">회원탈퇴</button>
+                <button type="button" id="withdrawal" formaction="/auth/withdrawal" formmethod="post" class="btn btn-warning">회원탈퇴</button>
             </div>
         </form>
     </div>
@@ -57,16 +57,23 @@
                 $('#height').attr("disabled", false);
                 $('#weight').attr("disabled", false);
                 $('#ageGroup').trigger("focus");
-                $('#modify').after('<button type="button" id="change" onclick class="btn btn-primary">수정하기</button>');
+                $('#modify').after('<button type="submit" id="change" formaction="/auth/update" formmethod="post" class="btn btn-primary">수정하기</button>');
                 $('#modify').remove();
                 console.log("change 버튼 생성됨");
             })
         });
 
         $(document).on("click", "#change", function(){
-            console.log("버튼은 작동함");
             alert("정보가 변경되었습니다!");
+        });
+
+        $(document).on("click", "#withdrawal", function(){
+            if ( !confirm('정말로 회원탈퇴 하시겠습니까?') ) {
+                return false;
+            }
+            $("form").attr("action", "/auth/withdrawal");
             $("form").submit();
+            alert("회원탈퇴가 완료되었습니다");
         });
 
     </script>

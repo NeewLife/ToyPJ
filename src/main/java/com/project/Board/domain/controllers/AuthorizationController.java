@@ -62,4 +62,12 @@ public class AuthorizationController {
         memberService.update(member);
         return "redirect:/post/mypage";
     }
+
+    @PostMapping("/withdrawal")
+    public String userDelete(MemberRequest member){
+        System.out.println("일단 컨트롤러 호출 성공");
+        System.out.println("withdrawal member : " + member.toString());
+        memberService.delete(member);
+        return "redirect:/logout";
+    }
 }

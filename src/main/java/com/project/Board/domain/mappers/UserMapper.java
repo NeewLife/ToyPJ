@@ -20,4 +20,5 @@ public interface UserMapper {
     int checkNickname(String nickname);
 
     void update(MemberRequest member);
+    void delete(MemberRequest member);
 }

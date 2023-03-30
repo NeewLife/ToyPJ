@@ -48,4 +48,8 @@ public class MemberService {
         userMapper.update(member);
     }
 
+    public void delete(MemberRequest memberRequest){
+        userMapper.delete(memberRequest);
+    }
+
 }
