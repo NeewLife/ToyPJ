@@ -1,5 +1,8 @@
 package com.project.Board.domain.services;
 
+import com.project.Board.domain.dto.page.Pagination;
+import com.project.Board.domain.dto.page.PagingResponse;
+import com.project.Board.domain.dto.page.SearchDto;
 import com.project.Board.domain.mappers.PostMapper;
 import com.project.Board.domain.dto.post.PostRequest;
 import com.project.Board.domain.dto.post.PostResponse;
@@ -7,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -48,7 +52,7 @@ public class PostService {
 
     /**
      * 게시글 삭제
-     * @param id - PK
+     * @param postId - PK
      * @return PK
      */
     public int deletePost(final int postId) {
@@ -58,10 +62,21 @@ public class PostService {
 
     /**
      * 게시글 리스트 조회
-     * @return 게시글 리스트
+     * @param params - search conditions
+     * @return list & pagination information
      */
-    public List<PostResponse> findAllPost() {
-        return postMapper.findAll();
+    public PagingResponse<PostResponse> findAllPost(final SearchDto params) {
+
+        int count = postMapper.count(params);
+        if (count < 1) {
+            return new PagingResponse<>(Collections.emptyList(), null);
+        }
+
+        Pagination pagination = new Pagination(count, params);
+        params.setPagination(pagination);
+
+        List<PostResponse> list = postMapper.findAll(params);
+        return new PagingResponse<>(list, pagination);
     }
 
     /**

@@ -32,7 +32,7 @@
                     <li><a class="nav-link" href="/post/post">게시판</a></li>
                     <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
                     <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span></li>
-                    <li><form method="post" action="/logout" sec:authorize="isAuthenticated()"><button type="submit"><span>로그아웃</span></button></form></li>
+                    <li><form  method="post" action="/logout" sec:authorize="isAuthenticated()"><button class="nav-link" type="submit">로그아웃</button></form></li>
                     <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
                     <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
                 </ul>

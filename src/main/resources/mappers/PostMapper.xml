@@ -12,6 +12,37 @@
         ,   modified_date
         ,   id
     </sql>
+
+    <!-- 게시글 검색 -->
+    <sql id="search">
+        <!-- 검색 키워드가 있을 때 -->
+        <if test="keyword != null and keyword != ''">
+            <choose>
+                <!-- 검색 유형이 있을 때 -->
+                <when test="searchType != null and searchType != ''">
+                    <choose>
+                        <when test="'title'.equals( searchType )">
+                            AND title LIKE CONCAT('%', #{keyword}, '%')
+                        </when>
+                        <when test="'content'.equals( searchType )">
+                            AND content LIKE CONCAT('%', #{keyword}, '%')
+                        </when>
+                        <when test="'writer'.equals( searchType )">
+                            AND writer LIKE CONCAT('%', #{keyword}, '%')
+                        </when>
+                    </choose>
+                </when>
+                <!-- 전체 검색일 때 때 -->
+                <otherwise>
+                    AND (
+                    title LIKE CONCAT('%', #{keyword}, '%')
+                    OR content LIKE CONCAT('%', #{keyword}, '%')
+                    OR writer LIKE CONCAT('%', #{keyword}, '%')
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
     
     <insert id="save" parameterType="com.project.Board.domain.dto.post.PostRequest" useGeneratedKeys="true" keyProperty="postId">
         INSERT INTO pj_post (
@@ -59,15 +90,28 @@
             post_id = #{postId}
     </delete>
 
-    <select id="findAll" resultType="com.project.Board.domain.dto.post.PostResponse">
+    <select id="findAll" parameterType="com.project.Board.domain.dto.page.SearchDto" resultType="com.project.Board.domain.dto.post.PostResponse">
         SELECT
             <include refid="postColumns" />
         FROM
             pj_post
         WHERE
             delete_yn = 0
+            <include refid="search" />
         ORDER BY
             created_date desc
+        LIMIT #{pagination.limitStart}, #{recordSize}
+    </select>
+
+    <!-- 게시글 수 카운팅 -->
+    <select id="count" parameterType="com.project.Board.domain.dto.page.SearchDto" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            pj_post
+        WHERE
+            delete_yn = 0
+            <include refid="search" />
     </select>
 
     <select id="findMine" resultType="com.project.Board.domain.dto.post.PostResponse">
