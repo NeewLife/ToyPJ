@@ -26,7 +26,7 @@
           <li><a class="nav-link" href="/post/post">게시판</a></li>
           <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/login">로그인</a></li>
           <li><span class="nav-link" sec:authorize="isAuthenticated()" th:text="@{${#authentication.principal.nickname}}"></span></li>
-          <li><form method="post" action="/logout" sec:authorize="isAuthenticated()"><button type="submit">로그아웃</button></form></li>
+          <li><form method="post" action="/logout" sec:authorize="isAuthenticated()"><button class="nav-link" type="submit">로그아웃</button></form></li>
           <li><a class="nav-link" sec:authorize="isAuthenticated()" href="/post/mypage">마이페이지</a></li>
           <li><a class="nav-link" sec:authorize="isAnonymous()" href="/post/register">회원가입</a></li>
         </ul>
@@ -58,7 +58,7 @@
             <div class="contact-address">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
+              <address>경기도 광명시 소하2동 거주중</address>
             </div>
           </div>
 
@@ -66,7 +66,7 @@
             <div class="contact-phone">
               <i class="bi bi-phone"></i>
               <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+              <p><a href="tel:01085533954">010-8553-3954</a></p>
             </div>
           </div>
 
@@ -74,7 +74,7 @@
             <div class="contact-email">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
+              <p><a href="mailto:dhtpdud2009@gmail.com">dhtpdud2009@gmail.com</a></p>
             </div>
           </div>
 

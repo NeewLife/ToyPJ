@@ -1,5 +1,7 @@
 package com.project.Board.domain.controllers;
 
+import com.project.Board.domain.dto.page.PagingResponse;
+import com.project.Board.domain.dto.page.SearchDto;
 import com.project.Board.domain.dto.post.PostRequest;
 import com.project.Board.domain.dto.post.PostResponse;
 import com.project.Board.domain.dto.user.Member;
@@ -11,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -64,7 +67,11 @@ public class PostController {
     }
 
     @PostMapping("/post/delete")
-    public String deletePost(@RequestParam final int postId) {
+    public String deletePost(@RequestParam final int postId, int id,
+                             @AuthenticationPrincipal Member member) {
+        if (id != member.getId()){
+            return "redirect:/post/post";
+        }
         postService.deletePost(postId);
         return "redirect:/post/post";
     }
@@ -85,8 +92,9 @@ public class PostController {
     }
 
     @GetMapping("/post/post")
-    public String openPost(Model model) {
-        List<PostResponse> posts = postService.findAllPost();
+    public String openPost(@ModelAttribute("params") final SearchDto params, Model model) {
+        PagingResponse<PostResponse> posts = postService.findAllPost(params);
+        System.out.println("PagingResponse : " + posts.toString());
         model.addAttribute("posts", posts);
         return "post/post";
     }
