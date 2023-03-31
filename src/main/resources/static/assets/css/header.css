@@ -3,11 +3,17 @@ ul#navbar{
   }
 
 li{
-    padding-right: 50px;
     list-style-type: none;
     display: inline-block;
     align-items : center;
   }
+
+.nav-link{
+    padding: 0 50px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+}
   
   .navbar{
     color: #fff;

@@ -6,6 +6,22 @@
 <th:block layout:fragment="content">
 
     <main class="container">
+        <!--/* 검색 */-->
+        <div class="search_box">
+            <form id="searchForm" onsubmit="return false;" autocomplete="off">
+                <div class="sch_group fl">
+                    <select id="searchType" name="searchType" title="검색 유형 선택">
+                        <option value="">전체 검색</option>
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                        <option value="writer">작성자</option>
+                    </select>
+                    <input type="text" id="keyword" name="keyword" placeholder="키워드를 입력해 주세요." title="키워드 입력" />
+                    <button type="button" class="bt_search" onclick="movePage(1);"><i class="fas fa-search"></i><span class="skip_info">검색</span></button>
+                </div>
+            </form>
+        </div>
+
         <article>
             <table class="table table-hover">
                 <thead>
@@ -17,20 +33,152 @@
                     <th scope="col">조회</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr th:each="row, status : ${posts}">
-                    <th scope="row" th:text="${status.size - status.index}"></th>
-                    <td class="title" ><a th:href="@{/post/view(postId=${row.postId})}"><p th:text="${row.title}" style="margin : 0px"></p></a></td>
-                    <td class="writer" th:text="${row.writer}"></td>
-                    <td class="writeDate" th:text="${#temporals.format( row.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
-                    <td class="viewCount" th:text="${row.viewCount}"></td>
-                  </tr>
+                <tbody id="list">
+<!--                  <tr th:each="row, status : ${posts}">-->
+<!--                    <th scope="row" th:text="${status.size - status.index}"></th>-->
+<!--                    <td class="title" ><a th:href="@{/post/view?postId=${row.postId}}"><p th:text="${row.title}" style="margin : 0px"></p></a></td>-->
+<!--                    <td class="writer" th:text="${row.writer}"></td>-->
+<!--                    <td class="writeDate" th:text="${#temporals.format( row.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>-->
+<!--                    <td class="viewCount" th:text="${row.viewCount}"></td>-->
+<!--                  </tr>-->
                 </tbody>
               </table>
+
+            <!--/* 페이지네이션 */-->
+            <nav aria-label="Page navigation example">
+                <ul id="paging" class="pagination justify-content-center">
+
+                </ul>
+            </nav>
+
               <div class="col-12" id="button">
                 <button type="button" class="btn btn-primary" onclick="location.href='/post/write'" >글쓰기</button>
               </div>
         </article>
     </main>
-</th:block>>
+</th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+
+        window.onload = () => {
+          setQueryStringParams();
+
+          findAllPost();
+        }
+
+
+        // 게시글 리스트 조회
+        function findAllPost() {
+
+          const list = [[ ${posts.list} ]];
+          if ( !list.length ) {
+                document.getElementById('list').innerHTML = '<td colspan="6"><div className="no_data_msg">검색된 결과가 없습니다.</div></td>';
+                drawPage();
+          }
+
+          const pagination = [[ ${posts.pagination} ]];
+          const params = [[ ${params} ]];
+          let num = pagination.totalRecordCount - ((params.page - 1) * params.recordSize);
+
+          drawList(list, num);
+          drawPage(pagination, params);
+        }
+
+        function drawList(list, num) {
+
+          let html = '';
+
+          list.forEach(row => {
+            html += `
+                <tr>
+                    <th>${num--}</th>
+                    <td><a href="javascript:void(0);" onclick="goViewPage(${row.postId});"><p style="margin : 0px">${row.title}</p></a></td>
+                    <td>${row.writer}</td>
+                    <td>${row.createdDate.split('T')[0]}</td>
+                    <td>${row.viewCount}</td>
+                </tr>
+            `;
+          })
+
+          document.getElementById('list').innerHTML = html;
+        }
+
+        // 페이지 HTML draw
+        function drawPage(pagination, params) {
+
+          if ( !pagination || !params ) {
+            document.querySelector('#paging').innerHTML = '';
+            throw new Error('Missing required parameters...');
+          }
+
+          let html = '';
+
+          // 첫 페이지, 이전 페이지
+          if (pagination.existPrevPage) {
+            html += `
+                <li class="page-item"><a href="javascript:void(0);" onclick="movePage(1)" class="page-link">&laquo;</a></li>
+                <li class="page-item"><a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})" class="page-link">&lt;</a></li>
+            `;
+          }
+
+          // 페이지 번호
+          html += '<p>';
+          for (let i = pagination.startPage; i <= pagination.endPage; i++) {
+            html += (i !== params.page)
+                    ? `<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="movePage(${i});">${i}</a></li>`
+                    : `<li class="page-item active" aria-current="page"><span class="page-link">${i}</span></li>`
+          }
+          html += '</p>';
+
+          // 다음 페이지, 마지막 페이지
+          if (pagination.existNextPage) {
+            html += `
+                <li class="page-item"><a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});" class="page-link">&gt;</a></li>
+                <li class="page-item"><a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});" class="page-link">&raquo;</a></li>
+            `;
+          }
+
+          document.querySelector('#paging').innerHTML = html;
+        }
+
+
+        // 페이지 이동
+        function movePage(page) {
+            const form = document.getElementById('searchForm');
+            const queryParams = {
+                  page: (page) ? page : 1
+                , recordSize: 10
+                , pageSize: 10
+                , searchType: form.searchType.value
+                , keyword: form.keyword.value
+            }
+            location.href = location.pathname + '?' + new URLSearchParams(queryParams).toString();
+        }
+
+        // 쿼리 스트링 파라미터 셋팅
+        function setQueryStringParams() {
+
+            if ( !location.search ) {
+                return false;
+            }
+
+            const form = document.getElementById('searchForm');
+
+            new URLSearchParams(location.search).forEach((value, key) => {
+                if (form[key]) {
+                    form[key].value = value;
+                }
+            })
+        }
+
+        // 게시글 상세 페이지로 이동
+        function goViewPage(postId) {
+            const queryString = (location.search) ? location.search + `&postId=${postId}` : `?postId=${postId}`;
+            location.href = '/post/view' + queryString;
+        }
+
+    /*]]>*/
+  </script>
+</th:block>
 </html>

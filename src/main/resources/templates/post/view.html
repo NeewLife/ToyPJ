@@ -6,49 +6,26 @@
 <th:block layout:fragment="content">
 
     <div class="container">
-        <table class="row gap-4">
-            <span class="col-3">
-                <div class="card">
-                    <div class="card-header">
-                      글쓴이
-                    </div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0" th:text="${posts.writer}"></blockquote>
-                    </div>
-                  </div>
-            </span>
-            <span class="col-9">
-                <div class="card">
-                    <div class="card-header">
-                      작성일
-                    </div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0" th:text="${#temporals.format( posts.createdDate, 'yyyy-MM-dd HH:mm' )}"></blockquote>
-                    </div>
-                  </div>
-            </span>
-            <span class="col-3">
-                <div class="card">
-                    <div class="card-header">
-                      조회수
-                    </div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0" th:text="${posts.viewCount}"></blockquote>
-                    </div>
-                  </div>
-            </span>
-            <span class="col-6">
-                <div class="card">
-                    <div class="card-header">
-                        제목
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0" th:text="${posts.title}"></blockquote>
-                    </div>
-                </div>
-            </span>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="table-light border border-secondary-subtle">작성자</th>
+                    <th scope="col" class="border border-secondary-subtle" th:text="${posts.writer}">First</th>
+                    <th scope="col" class="table-light border border-secondary-subtle">작성일</th>
+                    <th scope="col" class="border border-secondary-subtle" th:text="${#temporals.format( posts.createdDate, 'yyyy-MM-dd HH:mm' )}">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" class="table-light border border-secondary-subtle">제목</th>
+                    <td class="border border-secondary-subtle"th:text="${posts.title}"></td>
+                    <td class="table-light border border-secondary-subtle">조회수</td>
+                    <td class="border border-secondary-subtle" th:text="${posts.viewCount}">@mdo</td>
+                </tr>
+            </tbody>
+        </table>
             <span class="col-12">
-                <div class="card">
+                <div class="card" style="margin-top: 30px">
                     <div class="card-header">
                       상세 내용
                     </div>
@@ -57,14 +34,15 @@
                     </div>
                   </div>
             </span>
-            <form id="deleteForm" action="/post/delete" th:if="${{#authentication.principal.id == posts.id}}" method="post">
+            <form id="deleteForm" action="/post/delete" method="post">
                 <input type="hidden" id="postId" name="postId" th:value="${posts.postId}" />
-                <div id="button" style="text-align: center;">
-                    <a th:href="@{/post/write( postId = ${posts.postId} )}" class="btn btn-primary">수정</a>
-                    <button type="button" onclick="deletePost()" class="btn btn-primary">삭제</button>
+                <input type="hidden" id="id" name="id" th:value="${posts.id}" />
+                <div id="button" style="text-align: center; margin-top: 20px">
+                    <a th:href="@{/post/write( postId = ${posts.postId} )}" th:if="${{#authentication.principal.id == posts.id}}" class="btn btn-primary">수정</a>
+                    <button type="button" th:if="${{#authentication.principal.id == posts.id}}" onclick="deletePost()" class="btn btn-primary">삭제</button>
+                    <button type="button" onclick="goListPage();" class="btn btn-outline-secondary">뒤로</button>
                 </div>
             </form>
-        </table>
 
 <!--        댓글 기능 미구현-->
         <div class="numbox">전체 댓글 <span id="total_reply">2</span>개</div>
@@ -96,7 +74,15 @@
           if ( !confirm([[ ${posts.postId} ]] + '번 게시글을 삭제할까요?') ) {
             return false;
           }
+
           document.getElementById('deleteForm').submit();
+        }
+
+        // 게시글 리스트 페이지로 이동
+        function goListPage() {
+            const queryString = new URLSearchParams(location.search);
+            queryString.delete('postId');
+            location.href = '/post/post' + '?' + queryString.toString();
         }
 
         /*]]>*/
