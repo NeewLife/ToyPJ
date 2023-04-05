@@ -28,7 +28,7 @@
         FROM
             `user`
         WHERE
-            user_id = ${value}
+            user_id = #{value}
     </select>
 
     <select id="checkNickname" parameterType="String" resultType="int">
@@ -36,7 +36,7 @@
         FROM
             `user`
         WHERE
-            nickname = ${value}
+            nickname = #{value}
     </select>
 
     <select id="loginUser" resultType="com.project.Board.domain.dto.user.Member">
@@ -45,7 +45,7 @@
         FROM
             user
         WHERE
-            user_id = #{userId}
+            user_id = '#{userId}'
         AND
             delete_yn = 0
     </select>
@@ -56,7 +56,7 @@
         FROM
             user
         WHERE
-            user_id = #{userId}
+            user_id = '#{userId}'
         AND
             delete_yn = 0
     </select>
