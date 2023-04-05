@@ -45,7 +45,7 @@
         FROM
             user
         WHERE
-            user_id = '#{userId}'
+            user_id = #{userId}
         AND
             delete_yn = 0
     </select>
@@ -56,7 +56,7 @@
         FROM
             user
         WHERE
-            user_id = '#{userId}'
+            user_id = #{userId}
         AND
             delete_yn = 0
     </select>
