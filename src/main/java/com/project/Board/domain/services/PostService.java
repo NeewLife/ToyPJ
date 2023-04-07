@@ -83,8 +83,8 @@ public class PostService {
      * 내가 쓴 게시글 리스트 조회
      * @return 내 게시글 리스트
      */
-    public List<PostResponse> findMyPost() {
-        return postMapper.findMine();
+    public List<PostResponse> findMyPost(final int id) {
+        return postMapper.findMine(id);
     }
 
 }
