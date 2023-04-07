@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.Board.domain.mappers.ReplyMapper">
+    <sql id="replyColumns">
+        rep_writer
+        ,   rep_content
+        ,   rep_created_time
+        ,   post_id
+        ,   id
+        ,   rep_delete_yn
+    </sql>
+</mapper>
