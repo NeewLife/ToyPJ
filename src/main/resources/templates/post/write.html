@@ -9,7 +9,7 @@
         <form class="row gap-5" id="saveForm" method="post">
             <input type="hidden" id="postId" name="postId" th:if="${post != null}" th:value="${post.postId}" />
             <input type="hidden" id="id" name="id" th:value="@{${#authentication.principal.id}}" />
-            <input type="hidden" id="writer" name="writer" th:value="@{${#authentication.principal.userId}}"/>
+            <input type="hidden" id="writer" name="writer" th:value="@{${#authentication.principal.nickname}}"/>
             <div class="form-floating">
                 <div>제목</div>
                 <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="title" required>

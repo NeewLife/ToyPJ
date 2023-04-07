@@ -123,6 +123,8 @@
             `user`b
         ON
             a.id = b.id
+        WHERE
+            delete_yn = 0
         ORDER BY
             created_date desc
     </select>

@@ -42,6 +42,7 @@
             <div class="col-12">
                 <button type="button" id="modify" class="btn btn-primary">내 정보수정</button>
                 <button type="button" id="withdrawal" formaction="/auth/withdrawal" formmethod="post" class="btn btn-warning">회원탈퇴</button>
+                <button type="button" id="whatIWrote" class="btn btn-info">내가 쓴 글</button>
             </div>
         </form>
     </div>
@@ -74,6 +75,19 @@
             $("form").attr("action", "/auth/withdrawal");
             $("form").submit();
             alert("회원탈퇴가 완료되었습니다");
+        });
+
+
+
+        $(document).on("click", "#whatIWrote", function(){
+            const queryParams = {
+                  page : 1
+                , recordSize: 10
+                , pageSize: 10
+                , searchType: 'writer'
+                , keyword: $('#nickname').val()
+            }
+            location.href = '/post/post' + '?' + new URLSearchParams(queryParams).toString();
         });
 
     </script>
