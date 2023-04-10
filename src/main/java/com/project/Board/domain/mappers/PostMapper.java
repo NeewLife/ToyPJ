@@ -45,7 +45,6 @@ public interface PostMapper {
      * 내가 쓴 게시글 리스트 조회
      * @return 내 게시글 리스트
      */
-    List<PostResponse> findMine(int id);
 
     /**
      * 게시글 수 카운팅
