@@ -21,7 +21,7 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests(request -> request
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                        .requestMatchers("/assets/**", "/post/register", "/auth/**").permitAll()
+                        .requestMatchers("/assets/**", "/post/register", "/auth/**", "/post/index", "/post/post","/post/view").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
