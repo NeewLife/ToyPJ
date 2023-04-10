@@ -114,18 +114,4 @@
             <include refid="search" />
     </select>
 
-    <select id="findMine" resultType="com.project.Board.domain.dto.post.PostResponse">
-        SELECT
-            <include refid="postColumns" />
-        FROM
-            pj_post a
-        INNER JOIN
-            `user`b
-        ON
-            a.id = b.id
-        WHERE
-            delete_yn = 0
-        ORDER BY
-            created_date desc
-    </select>
 </mapper>
