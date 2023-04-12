@@ -11,5 +11,6 @@ public class ReplyResponse {
     private String repWriter;
     private String repContent;
     private LocalDateTime repCreatedTime;
+    private int repDeleteYn;
 
 }

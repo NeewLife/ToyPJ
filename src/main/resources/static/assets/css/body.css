@@ -21,7 +21,10 @@ body, html {
   height: auto;
 }
 
-
+.button {
+  margin-top: 20px;
+  display: inline-block;
+}
 
 .numbox {
   padding: 15px 3px; 

@@ -7,7 +7,22 @@
         ,   rep_content
         ,   rep_created_time
         ,   post_id
-        ,   id
+        ,   rep_id
         ,   rep_delete_yn
     </sql>
+
+    <insert id="writeReply" parameterType="com.project.Board.domain.dto.reply.ReplyRequest">
+        INSERT INTO reply ( rep_writer, rep_content, rep_created_time, post_id, rep_delete_yn )
+        VALUES ( #{repWriter}, #{repContent}, NOW(), #{postId}, 0)
+    </insert>
+    
+    <select id="findReply" parameterType="com.project.Board.domain.dto.reply.ReplyRequest" resultType="com.project.Board.domain.dto.reply.ReplyResponse">
+        SELECT
+            <include refid="replyColumns" />
+        FROM
+            reply
+        WHERE
+            post_id = #{postId}
+        AND rep_delete_yn = 0
+    </select>
 </mapper>

@@ -60,15 +60,21 @@
         )
     </insert>
 
-    <select id="findById" parameterType="Integer" resultType="com.project.Board.domain.dto.post.PostResponse">
+    <update id="viewCountUp" parameterType="int">
+        UPDATE pj_post
+        SET
+            view_count = view_count + 1
+        WHERE
+            post_id = #{postId}
+    </update>
+
+    <select id="findById" parameterType="int" resultType="com.project.Board.domain.dto.post.PostResponse">
         SELECT
             <include refid="postColumns" />
         FROM
             pj_post
         WHERE
-            post_id = #{postId}
-        AND
-            delete_yn = 0
+            delete_yn = 0 AND post_id = #{postId}
     </select>
     
     <update id="update" parameterType="com.project.Board.domain.dto.post.PostRequest">
@@ -78,8 +84,7 @@
         ,   title = #{title}
         ,   content = #{content}
         ,   writer = #{writer}
-        WHERE
-            post_id = #{postId}
+        WHERE post_id = #{postId}
     </update>
 
     <delete id="deleteById" parameterType="Integer">

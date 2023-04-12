@@ -30,8 +30,6 @@ public class MemberService {
 
     public void signup(MemberRequest memberRequest){
         memberRequest.setPassword(passwordEncoder.encode(memberRequest.getPassword()));
-//        System.out.println("============================");
-//        System.out.println(memberRequest.getPassword());
         userMapper.joinUser(memberRequest);
     }
 

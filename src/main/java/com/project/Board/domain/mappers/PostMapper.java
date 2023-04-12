@@ -24,6 +24,14 @@ public interface PostMapper {
     PostResponse findById(int postId);
 
     /**
+     * 게시글 조회수 증가
+     *
+     * @param postId - PK
+     * @return 게시글 조회수
+     */
+    int viewCountUp(final int postId);
+
+    /**
      * 게시글 수정
      * @param params - 게시글 정보
      */
