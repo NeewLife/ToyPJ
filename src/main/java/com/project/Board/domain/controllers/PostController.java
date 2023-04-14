@@ -92,7 +92,7 @@ public class PostController {
         postService.viewCountUp(postId);
         PostResponse posts = postService.findPostById(postId);
         model.addAttribute("posts", posts);
-        ReplyResponse replies = replyService.findReply(postId);
+        List<ReplyResponse> replies = replyService.findReply(postId);
         System.out.println("replies : " + replies);
         model.addAttribute("replies",replies);
         return "post/view";

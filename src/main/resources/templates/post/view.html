@@ -50,17 +50,17 @@
             </form>
 
 <!--        댓글 기능 미구현-->
-<!--        <div class="numbox">전체 댓글 <span id="total_reply">2</span>개</div>-->
-<!--        <ul class="reply">-->
-<!--            <li class="rp_nickbox">손흥민</li>-->
-<!--            <li class="rp_content">댓글기능 구현중</li>-->
-<!--            <li class="rp_date">2023.03.06 19:22:03</li>-->
-<!--        </ul>-->
-<!--        <ul class="reply">-->
-<!--            <li class="rp_nickbox">일곱글자제한임</li>-->
-<!--            <li class="rp_content">공사중</li>-->
-<!--            <li class="rp_date">2023.03.06 19:23:55</li>-->
-<!--        </ul>-->
+        <div class="numbox">전체 댓글 <span id="total_reply" th:text="${#lists.size(replies)}">2</span>개</div>
+        <ul class="reply" th:each="replies: ${replies}">
+            <li class="rp_nickbox" th:text="${replies.repWriter}">손흥민</li>
+            <li class="rp_content" th:text="${replies.repContent}">댓글기능 구현중</li>
+            <li class="rp_date" th:text="${replies.repCreatedTime}">2023.03.06 19:22:03</li>
+        </ul>
+        <ul class="reply">
+            <li class="rp_nickbox">일곱글자제한임</li>
+            <li class="rp_content">공사중</li>
+            <li class="rp_date">2023.03.06 19:23:55</li>
+        </ul>
         <form>
             <div th:if="${#authentication.principal != 'anonymousUser'}">
                 <input type="hidden" name="postId" th:value="${posts.postId}" />
@@ -80,6 +80,7 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
+
             function deletePost() {
 
               if ( !confirm([[ ${posts.postId} ]] + '번 게시글을 삭제할까요?') ) {
@@ -111,6 +112,7 @@
                              , "repWriter":repWriter
                              , "repContent":repContent},
                         success: function(data){
+                            alert("넘긴 데이터 : " + data);
                             console.log("넘긴 데이터 : " + data);
                         },
                         error : function(error){alert(error);}

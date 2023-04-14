@@ -6,6 +6,8 @@ import com.project.Board.domain.mappers.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReplyService {
@@ -17,7 +19,7 @@ public class ReplyService {
         return params.getPostId();
     }
 
-    public ReplyResponse findReply(int postId) {
+    public List<ReplyResponse> findReply(int postId) {
         return replyMapper.findReply(postId);
     }
 }
