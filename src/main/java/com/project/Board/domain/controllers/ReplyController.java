@@ -13,9 +13,8 @@ public class ReplyController {
     private final ReplyService replyService;
 
     @PostMapping("/reply/write")
-    public String writeReply(Model model, ReplyRequest params){
+    public void writeReply(Model model, ReplyRequest params){
         model.addAttribute(params);
         replyService.writeReply(params);
-        return "redirect:/post/view?postId="+params.getPostId();
     }
 }
