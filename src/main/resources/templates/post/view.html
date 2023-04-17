@@ -49,18 +49,14 @@
 
             </form>
 
-<!--        댓글 기능 미구현-->
+<!--        댓글 기능 구현-->
         <div class="numbox">전체 댓글 <span id="total_reply" th:text="${#lists.size(replies)}">2</span>개</div>
         <ul class="reply" th:each="replies: ${replies}">
-            <li class="rp_nickbox" th:text="${replies.repWriter}">손흥민</li>
-            <li class="rp_content" th:text="${replies.repContent}">댓글기능 구현중</li>
-            <li class="rp_date" th:text="${replies.repCreatedTime}">2023.03.06 19:22:03</li>
+            <li class="rp_nickbox" th:text="${replies.repWriter}"></li>
+            <li class="rp_content" th:text="${replies.repContent}"></li>
+            <li class="rp_date" th:text="${replies.repCreatedTime}"></li>
         </ul>
-        <ul class="reply">
-            <li class="rp_nickbox">일곱글자제한임</li>
-            <li class="rp_content">공사중</li>
-            <li class="rp_date">2023.03.06 19:23:55</li>
-        </ul>
+
         <form>
             <div th:if="${#authentication.principal != 'anonymousUser'}">
                 <input type="hidden" name="postId" th:value="${posts.postId}" />
