@@ -32,11 +32,20 @@ public class PostService {
 
     /**
      * 게시글 상세정보 조회
-     * @param id - PK
+     * @param postId - PK
      * @return 게시글 상세정보
      */
-    public PostResponse findPostById(final int id) {
-        return postMapper.findById(id);
+    public PostResponse findPostById(final int postId) {
+        return postMapper.findById(postId);
+    }
+
+    /**
+     * 게시글 조회수 증가
+     * @param postId - 게시글 번호
+     * @return 게시글 조회수
+     */
+    public int viewCountUp(final int postId) {
+        return postMapper.viewCountUp(postId);
     }
 
     /**

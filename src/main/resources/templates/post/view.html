@@ -37,53 +37,84 @@
             <form id="deleteForm" action="/post/delete" method="post">
                 <input type="hidden" id="postId" name="postId" th:value="${posts.postId}" />
                 <input type="hidden" id="id" name="id" th:value="${posts.id}" />
-                <div id="button" style="text-align: center; margin-top: 20px">
-                    <a th:href="@{/post/write( postId = ${posts.postId} )}" th:if="${{#authentication.principal.id == posts.id}}" class="btn btn-primary">수정</a>
-                    <button type="button" th:if="${{#authentication.principal.id == posts.id}}" onclick="deletePost()" class="btn btn-primary">삭제</button>
-                    <button type="button" onclick="goListPage();" class="btn btn-outline-secondary">뒤로</button>
+                <div style="text-align: center;">
+                    <div class="button" th:if="${#authentication.principal != 'anonymousUser'}">
+                        <a th:if="${#authentication.principal.id == posts.id}" th:href="@{/post/write( postId = ${posts.postId} )}"  class="btn btn-primary">수정</a>
+                        <button type="button" th:if="${#authentication.principal.id == posts.id}" onclick="deletePost()" class="btn btn-primary">삭제</button>
+                    </div>
+                    <div class="button">
+                        <button type="button" onclick="goListPage();" class="btn btn-outline-secondary">뒤로</button>
+                    </div>
                 </div>
+
             </form>
 
-<!--        댓글 기능 미구현-->
-<!--        <div class="numbox">전체 댓글 <span id="total_reply">2</span>개</div>-->
-<!--        <ul class="reply">-->
-<!--            <li class="rp_nickbox">손흥민</li>-->
-<!--            <li class="rp_content">댓글기능 구현중</li>-->
-<!--            <li class="rp_date">2023.03.06 19:22:03</li>-->
-<!--        </ul>-->
-<!--        <ul class="reply">-->
-<!--            <li class="rp_nickbox">일곱글자제한임</li>-->
-<!--            <li class="rp_content">공사중</li>-->
-<!--            <li class="rp_date">2023.03.06 19:23:55</li>-->
-<!--        </ul>-->
-<!--        <div class="reply_write">-->
-<!--            <label class="form-label">댓글</label>-->
-<!--            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
-<!--        </div>-->
-<!--        <div id="rp_button">-->
-<!--            <button type="submit" class="btn btn-primary">댓글 작성</button>-->
-<!--        </div>-->
+<!--        댓글 기능 구현-->
+        <div class="numbox">전체 댓글 <span id="total_reply" th:text="${#lists.size(replies)}">2</span>개</div>
+        <ul class="reply" th:each="replies: ${replies}">
+            <li class="rp_nickbox" th:text="${replies.repWriter}"></li>
+            <li class="rp_content" th:text="${replies.repContent}"></li>
+            <li class="rp_date" th:text="${replies.repCreatedTime}"></li>
+        </ul>
+
+        <form>
+            <div th:if="${#authentication.principal != 'anonymousUser'}">
+                <input type="hidden" name="postId" th:value="${posts.postId}" />
+                <input type="hidden" id="repWriter" name="repWriter" th:value="${#authentication.principal.nickname}" />
+                <div class="reply_write">
+                    <label class="form-label">댓글</label>
+                    <textarea class="form-control" id="repContent" name="repContent" rows="3"></textarea>
+                </div>
+                <div id="rp_button">
+                    <button type="button" id="writeReply" class="btn btn-primary">댓글 작성</button>
+                </div>
+            </div>
+        </form>
     </div>
 </th:block>>
 
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
-        function deletePost() {
 
-          if ( !confirm([[ ${posts.postId} ]] + '번 게시글을 삭제할까요?') ) {
-            return false;
-          }
+            function deletePost() {
 
-          document.getElementById('deleteForm').submit();
-        }
+              if ( !confirm([[ ${posts.postId} ]] + '번 게시글을 삭제할까요?') ) {
+                return false;
+              }
 
-        // 게시글 리스트 페이지로 이동
-        function goListPage() {
-            const queryString = new URLSearchParams(location.search);
-            queryString.delete('postId');
-            location.href = '/post/post' + '?' + queryString.toString();
-        }
+              document.getElementById('deleteForm').submit();
+            }
+
+            // 게시글 리스트 페이지로 이동
+            function goListPage() {
+                const queryString = new URLSearchParams(location.search);
+                queryString.delete('postId');
+                location.href = '/post/post' + '?' + queryString.toString();
+            }
+
+            $(function(){
+
+
+                $("#writeReply").click(function(){
+
+                    let repWriter = $("#repWriter").val();
+                    let repContent = $("#repContent").val();
+
+                    $.ajax({
+                        type:'post',
+                        url:"/reply/write",
+                        data: {"postId":[[ ${posts.postId} ]]
+                             , "repWriter":repWriter
+                             , "repContent":repContent},
+                        success: function(data){
+                            alert("넘긴 데이터 : " + data);
+                            console.log("넘긴 데이터 : " + data);
+                        },
+                        error : function(error){alert(error);}
+                    });
+                });
+            });
 
         /*]]>*/
         </script>
