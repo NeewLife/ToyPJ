@@ -32,5 +32,6 @@ CREATE TABLE `reply` (
 	`rep_content`	varchar(2000)	NOT NULL	COMMENT '내용',
 	`rep_created_time`	datetime	NOT NULL	DEFAULT current_timestamp()	COMMENT '작성날짜',
 	`post_id`	int(10)	NOT NULL	COMMENT '식별번호',
-	`id`	int(10)	NOT NULL	COMMENT '사용자식별번호'
+	`rep_id`	int(10)	NOT NULL	AUTO_INCREMENT	PRIMARY KEY	COMMENT '댓글식별번호',
+	`rep_delete_yn`	tinyint(1)	NOT NULL	DEFAULT 0	COMMENT '댓글삭제여부'
 );
