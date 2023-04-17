@@ -12,8 +12,8 @@
 
 ## 로컬 실행방법(develop 브랜치 사용)
 
-1. [DDL.md](https://github.com/NeewLife/ToyPJ/blob/main/DDL.md) 파일을 열어서 쿼리문을 실행하여 테이블을 생성한다.(MySQL 사용)
-2. [application.properties](https://github.com/NeewLife/ToyPJ/blob/main/src/main/resources/application.properties) 에서 DB 연결할 username, password 를 자신의 DB에 맞게 변경한다.
+1. [DDL.md](https://github.com/NeewLife/ToyPJ/blob/develop/DDL.md) 파일을 열어서 쿼리문을 실행하여 테이블을 생성한다.(MySQL 사용)
+2. [application.properties](https://github.com/NeewLife/ToyPJ/blob/main/src/develop/resources/application.properties) 에서 DB 연결할 username, password 를 자신의 DB에 맞게 변경한다.
 3. `ToyPjApplication` 실행
 
 ### DB 테이블(MySQL 사용)
