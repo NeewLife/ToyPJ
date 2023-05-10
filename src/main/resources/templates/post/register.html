@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout/basic}"
+      layout:decorate="~{layout/basic}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <th:block layout:fragment="content">
 
       <div class="container">
         <form class="row gap-4" action="/auth/register" method="post" >
-            <div class="col-9">
+            <div class="col-12">
                 <label for="inputName" class="form-label">실명</label>
                 <input type="text" class="form-control" id="inputName" name="name" maxlength="4" required>
             </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputSex">성별</label>
-                <select class="form-select" id="inputSex" name="sex" required>
+            <div>
+                <label for="inputSex" class="form-label">성별</label>
+                <select class="form-select" id="inputSex" aria-label="Default select example" name="sex" required>
                     <option selected name="sex" value="">Choose...</option>
                     <option value="male" name="sex">남자</option>
                     <option value="female" name="sex">여자</option>
                 </select>
             </div>
-            <div class="col-9">
+            <div class="col-12">
               <label for="inputUserId" class="form-label">아이디(최대 7글자)</label>
               <input type="text" class="form-control" id="inputUserId" name="userId" maxlength="7" required>
             </div>
-            <div class="col-9">
+            <div class="col-12">
               <label for="inputPassword" class="form-label">비밀번호(최대 10글자)</label>
               <input type="password" class="form-control" id="inputPassword" name="password" maxlength="10" required>
             </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputAgeGroup">연령대</label>
-                <select class="form-select" id="inputAgeGroup" name="ageGroup" required>
+            <div>
+                <label for="inputAgeGroup" class="form-label">연령대</label>
+                <select class="form-select" id="inputAgeGroup" aria-label="Default select example" name="ageGroup" required>
                     <option value="">현재 연령대</option>
                     <option value="10">10대</option>
                     <option value="20">20대</option>
@@ -39,20 +39,20 @@
                     <option value="60">50대 이상</option>
                 </select>
             </div>
-            <div class="col-9">
+            <div class="col-12">
                 <label for="inputNickname" class="form-label">닉네임</label>
                 <input type="text" class="form-control" id="inputNickname" name="nickname" required>
             </div>
-            <div class="col-9">
+            <div class="col-12">
               <label for="inputHeight" class="form-label">키</label>
               <input type="text" class="form-control" id="inputHeight" placeholder="cm 제외  ex) 188" name="height" required>
             </div>
-            <div class="col-9">
+            <div class="col-12">
               <label for="inputWeight" class="form-label">몸무게</label>
               <input type="text" class="form-control" id="inputWeight" placeholder="kg 제외  ex) 68" name="weight" required>
             </div>
 
-            <div class="col-12">
+            <div class="col-12" style="text-align: center">
               <button type="button" id="checkDup" class="btn btn-primary">회원가입</button>
             </div>
           </form>
@@ -105,10 +105,10 @@
                                 $("#nickname").trigger("focus");
                             }
                             else {
-                                console.log("그 외의 무언가");
+                                console.log("그 외의 에러");
                             }
                         },
-                        error : function(error){alert(error);}
+                        error : function(error){alert(잘못된 입력 값입니다.);}
                     });
                 });
             });

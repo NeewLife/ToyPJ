@@ -18,6 +18,7 @@
                     </select>
                     <input type="text" id="keyword" name="keyword" placeholder="키워드를 입력해 주세요." title="키워드 입력" />
                     <button type="button" class="bt_search" onclick="movePage(1);"><i class="fas fa-search"></i><span class="skip_info">검색</span></button>
+                    <i class="fas fa-search"></i>
                 </div>
             </form>
         </div>
@@ -46,7 +47,7 @@
             </nav>
 
               <div class="col-12" id="button">
-                <button type="button" class="btn btn-primary" onclick="location.href='/post/write'" >글쓰기</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/post/write'" >새 글쓰기</button>
               </div>
         </article>
     </main>
@@ -87,7 +88,7 @@
             html += `
                 <tr>
                     <th>${num--}</th>
-                    <td><a href="javascript:void(0);" onclick="goViewPage(${row.postId});"><p style="margin : 0px">${row.title}</p></a></td>
+                    <td><a href="javascript:void(0);" onclick="goViewPage(${row.postId});" style="text-decoration: none;">${row.title}</a></td>
                     <td>${row.writer}</td>
                     <td>${row.createdDate.split('T')[0]}</td>
                     <td>${row.viewCount}</td>
