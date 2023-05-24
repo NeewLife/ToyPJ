@@ -12,5 +12,5 @@ public class ReplyResponse {
     private String repContent;
     private LocalDateTime repCreatedTime;
     private int repDeleteYn;
-
+    private String repPassword;
 }

@@ -9,11 +9,12 @@
         ,   post_id
         ,   rep_id
         ,   rep_delete_yn
+        ,   rep_password
     </sql>
 
     <insert id="writeReply" parameterType="com.project.Board.domain.dto.reply.ReplyRequest">
-        INSERT INTO reply ( rep_writer, rep_content, rep_created_time, post_id, rep_delete_yn )
-        VALUES ( #{repWriter}, #{repContent}, NOW(), #{postId}, 0)
+        INSERT INTO reply ( rep_writer, rep_content, rep_created_time, post_id, rep_delete_yn, rep_password )
+        VALUES ( #{repWriter}, #{repContent}, NOW(), #{postId}, 0, #{repPassword})
     </insert>
     
     <select id="findReply" parameterType="com.project.Board.domain.dto.reply.ReplyRequest" resultType="com.project.Board.domain.dto.reply.ReplyResponse">
@@ -25,4 +26,12 @@
             post_id = #{postId}
         AND rep_delete_yn = 0
     </select>
+
+    <delete id="deleteReply" parameterType="int">
+        UPDATE reply
+        SET
+            rep_delete_yn = 1
+        WHERE
+            rep_id = #{repId}
+    </delete>
 </mapper>

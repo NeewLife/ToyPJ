@@ -22,13 +22,14 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/post")
 public class PostController {
 
     private final PostService postService;
     private final ReplyService replyService;
 
     // 게시글 작성 페이지
-    @GetMapping("/post/write")
+    @GetMapping("/write")
     public String openPostWrite(
             @RequestParam (value = "postId", required = false) final Integer postId, Model model
             , @AuthenticationPrincipal Member member) {
@@ -44,20 +45,20 @@ public class PostController {
         return "post/write";
     }
 
-    @PostMapping("/post/save")
+    @PostMapping("/save")
     public String savePost(Model model, PostRequest params){
         model.addAttribute(params);
         postService.savePost(params);
         return "redirect:/post/post";
     }
 
-    @PostMapping("/post/update")
+    @PostMapping("/update")
     public String updatePost(final PostRequest params){
         postService.updatePost(params);
         return "redirect:/post/post";
     }
 
-    @PostMapping("/post/delete")
+    @PostMapping("/delete")
     public String deletePost(@RequestParam final int postId, int id,
                              @AuthenticationPrincipal Member member) {
         if (id != member.getId()){
@@ -67,26 +68,26 @@ public class PostController {
         return "redirect:/post/post";
     }
 
-    @GetMapping("/post/index")
+    @GetMapping("/index")
     public String openMain(Model model) {
         return "post/index";
     }
 
-    @GetMapping("/post/mypage")
+    @GetMapping("/mypage")
     public String openMyPage(@AuthenticationPrincipal Member member, Model model) {
         Member memberRequest = memberService.findByUserId(member.getUserId());
         model.addAttribute("member", memberRequest);
         return "post/mypage";
     }
 
-    @GetMapping("/post/post")
+    @GetMapping("/post")
     public String openPost(@ModelAttribute("params") final SearchDto params, Model model) {
         PagingResponse<PostResponse> posts = postService.findAllPost(params);
         model.addAttribute("posts", posts);
         return "post/post";
     }
 
-    @GetMapping("/post/view")
+    @GetMapping("/view")
     public String openViewPage(@RequestParam final int postId, Model model) {
         System.out.println("postId : " + postId);
         postService.viewCountUp(postId);
@@ -98,14 +99,14 @@ public class PostController {
         return "post/view";
     }
 
-    @GetMapping("/post/register")
+    @GetMapping("/register")
     public String openRegister(Model model, MemberRequest memberRequest) {
         model.addAttribute("memberRequest", memberRequest);
         return "post/register";
     }
 
     private final MemberService memberService;
-    @GetMapping("/post/login")
+    @GetMapping("/login")
     public String loginPage(@AuthenticationPrincipal Member member) {
         if (member != null){
             return "post/index";

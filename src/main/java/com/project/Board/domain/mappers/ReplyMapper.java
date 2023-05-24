@@ -11,4 +11,6 @@ public interface ReplyMapper {
     void writeReply(ReplyRequest params);
 
     List<ReplyResponse> findReply(int postId);
+
+    void deleteReply(int repId);
 }

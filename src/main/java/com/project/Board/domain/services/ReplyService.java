@@ -15,8 +15,13 @@ public class ReplyService {
 
 //    댓글 작성
     public int writeReply(ReplyRequest params){
+
         replyMapper.writeReply(params);
         return params.getPostId();
+    }
+
+    public void deleteReply(int repId){
+        replyMapper.deleteReply(repId);
     }
 
     public List<ReplyResponse> findReply(int postId) {

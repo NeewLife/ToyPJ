@@ -43,7 +43,7 @@
         SELECT
             <include refid="userColumns" />
         FROM
-            user
+            `user`
         WHERE
             user_id = #{userId}
         AND
@@ -54,7 +54,7 @@
         SELECT
             <include refid="userColumns" />
         FROM
-            user
+            `user`
         WHERE
             user_id = #{userId}
         AND

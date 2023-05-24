@@ -7,4 +7,5 @@ public class ReplyRequest {
     private String repWriter;
     private String repContent;
     private int postId;
+    private String repPassword;
 }
